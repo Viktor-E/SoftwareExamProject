@@ -1,0 +1,8 @@
+    Date d=new Date();
+    int year=d.getYear();
+    int currentYear=(year-100)*1000;
+
+    private static int runner = 0;
+
+    this.projektnummre = currentYear+this.runner;
+
