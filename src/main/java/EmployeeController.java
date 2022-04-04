@@ -6,7 +6,7 @@ public class EmployeeController {
     private static int employeeID = 0;
 
     //TODO check name length
-    //TODO remove employee
+    //TODO remove employee -
     //TODO find employee (return index)
 
     public static void addEmployee(String name) {
