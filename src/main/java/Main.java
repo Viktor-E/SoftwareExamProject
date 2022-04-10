@@ -12,5 +12,7 @@ public class Main {
 
         EmployeeController.printArray();
 
+        Program program = new Program(EmployeeController.employees);
+
     }
 }

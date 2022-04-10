@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class EmployeeController {
 
-    private static ArrayList<Employee> employees = new ArrayList<Employee>();
+    public static ArrayList<Employee> employees = new ArrayList<Employee>();
     private static int employeeID = 0;
 
     //TODO check name length
@@ -23,7 +23,6 @@ public class EmployeeController {
             System.out.println(employees.get(i).getEmployeeid());
         }
     }
-
 
 
 
