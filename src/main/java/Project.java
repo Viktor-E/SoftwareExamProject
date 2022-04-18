@@ -44,10 +44,10 @@ public class Project {
         projects.add(Procject1);
     }
 
-    public static void addActivty(Project project, String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
+    public void addActivty(String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
 
-        Activity.createActivity(name1, type1, date1, date2);
-        //TODO : add activity to project activities list
+        activities.add(Activity.createActivity(name1, type1, date1, date2));
+
 
     }
 

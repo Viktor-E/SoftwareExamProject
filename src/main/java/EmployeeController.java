@@ -23,6 +23,14 @@ public class EmployeeController {
             System.out.println(employees.get(i).getEmployeeid());
         }
     }
+    public static Employee findEmployee(String name) {
+        for(int i = 0; i < employees.size(); i++) {
+            if(employees.get(i).getName().equals(name)) {
+                return employees.get(i);
+            }
+        }
+        return null;
+    }
 
 
 

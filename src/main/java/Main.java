@@ -15,12 +15,21 @@ public class Main {
 
         EmployeeController.printArray();
 
-        //Date format "MM-dd-yyyy" - date is wrong idk lol
 
-        Activity.createActivity("test", Activity.ActivityType.ANALYSE, "1-9-1996", "00-00-2000");
+        Activity.createActivity("test", Activity.ActivityType.ANALYSE, "01-09-1996", "01-01-2000");
 
-        Activity.createActivity("test2", Activity.ActivityType.ANALYSE, "1-10-1990", "00-00-3000");
+        Activity.createActivity("test2", Activity.ActivityType.ANALYSE, "01-10-2000", "01-02-3000");
 
         Activity.printActivity();
+
+        Project.createProject("testProejct");
+
+
+        Employee user = EmployeeController.findEmployee("joe");
+        user.registerTime(helpclass.stringToDate("01-10-2000"),Activity.findActivity("test"),100);
+
+        user.registerTime(helpclass.stringToDate("01-10-2000"),Activity.findActivity("test2"),3000);
+
+        user.timeRegistations(helpclass.stringToDate("01-10-2000"));
     }
 }

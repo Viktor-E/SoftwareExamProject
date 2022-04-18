@@ -12,9 +12,10 @@ public class Activity {
 
 	private ActivityType type;
 	private String name;
-	private static Date startDate;
+	private Date startDate;
 	private Date endDate;
 	private int estimatedTime = 0;
+	private int workedTime;
 
 
 
@@ -31,6 +32,7 @@ public class Activity {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.estimatedTime = 0;
+		this.workedTime = 0;
 	}
 
 
@@ -72,7 +74,7 @@ public class Activity {
 
 	//We need to make date objects to use in the constructor :)
 
-	public static void createActivity(String name1, ActivityType type1, String date1, String date2) throws ParseException {
+	public static Activity createActivity(String name1, ActivityType type1, String date1, String date2) throws ParseException {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Date d1 = df.parse(date1);
 		Date d2 = df.parse(date2);
@@ -80,6 +82,8 @@ public class Activity {
 
 		//for testing
 		activitiis.add(activity);
+
+		return activity;
 	}
 
 	public static void printActivity() {
@@ -89,6 +93,18 @@ public class Activity {
 			System.out.println(activitiis.get(i).getEndDate());
 			System.out.println(activitiis.get(i).getActivityName());
 		}
+	}
+	public String getName() {
+		return name;
+	}
+
+	public static Activity findActivity(String name) {
+		for(int i = 0; i < activitiis.size(); i++) {
+			if(activitiis.get(i).getName().equals(name)) {
+				return activitiis.get(i);
+			}
+		}
+		return null;
 	}
 
 }
