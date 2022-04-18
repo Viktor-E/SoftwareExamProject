@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Program {
 
-    DataBase dataBase;
     ArrayList<Employee> employeeList;
     Window currentWindow;
     Employee currentUser;

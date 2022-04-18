@@ -5,4 +5,16 @@ public class RegisterTimeWindow extends Window  {
         changeWindow();
     }
 
+    /*
+    ArrayList of RegistrationContainer
+    RegistrationContainer:
+        - Date e.g. 2022-02-13
+        - ArrayList of TimeRegistration
+    TimeRegistration
+        Time spent
+        Activity
+
+
+     */
+
 }

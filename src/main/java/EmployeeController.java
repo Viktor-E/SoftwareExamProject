@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class EmployeeController {
 
-    public static ArrayList<Employee> employees = new ArrayList<Employee>();
+    private static ArrayList<Employee> employees = new ArrayList<Employee>();
     private static int employeeID = 0;
 
-    //TODO check name length
+    //TODO check name length (has to be 4)
     //TODO remove employee
-    //TODO find employee (return index)
+    //TODO find employee (based on name)
 
     public static void addEmployee(String name) {
 
