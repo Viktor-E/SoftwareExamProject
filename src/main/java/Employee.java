@@ -52,8 +52,8 @@ public class Employee {
         for(int i = 0; i <timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
                 for(int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
-                    System.out.println(timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime());
-                    System.out.println(timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedActivity().getName());
+                    System.out.print("user: " + getName() + " has worked :" + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime() + " hours on ");
+                    System.out.println("activity: " + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedActivity().getName());
                 }
             }
         }
