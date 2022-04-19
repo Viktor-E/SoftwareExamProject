@@ -60,7 +60,6 @@ public class Activity {
 	public void setActivityName(String name) {this.name = name;}
 	public void setEstimatedTime(int time) {this.estimatedTime = time;}
 	public void setActivityType(ActivityType type) {this.type = type;}
-	// TODO : FIX date
 	public void setStartDate(String date) throws ParseException {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Date d1 = df.parse(date);
@@ -98,6 +97,7 @@ public class Activity {
 		return name;
 	}
 
+	//TODO make another loop to check in projects
 	public static Activity findActivity(String name) {
 		for(int i = 0; i < activitiis.size(); i++) {
 			if(activitiis.get(i).getName().equals(name)) {

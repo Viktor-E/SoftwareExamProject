@@ -6,6 +6,7 @@ public class RegistrationContainer {
     private ArrayList<TimeRegistration> timeRegistration;
     private Date workedDate;
 
+    // Constructor
     public RegistrationContainer(Date date) {
         this.workedDate = date;
         this.timeRegistration = new ArrayList<TimeRegistration>();

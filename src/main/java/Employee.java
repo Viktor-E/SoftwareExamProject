@@ -8,9 +8,7 @@ public class Employee {
     private int maxActivities;
     private ArrayList<RegistrationContainer> timeRegistrationContainers;
 
-
-
-    // Constructor 1
+    // Constructor
     public Employee(String name, int ID) {
         this.name = name;
         this.employeeid = ID;
@@ -19,23 +17,21 @@ public class Employee {
         this.timeRegistrationContainers = new ArrayList<RegistrationContainer>();
     }
 
+    //get and setter functions
     public void setName(String name) {
         this.name = name;
     }
-
     public String getName() {
         return name;
     }
-
     public int getEmployeeid() {
         return employeeid;
     }
-
     public void setEmployeeid(int employeeid) {
         this.employeeid = employeeid;
-
     }
 
+    //function for making a timeRegistrationContainer
     public void registerTime(Date date, Activity activity,int worktime){
         for(int i = 0; i < timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
@@ -48,6 +44,7 @@ public class Employee {
         timeRegistrationContainers.get(timeRegistrationContainers.size()-1).addRegistration(new TimeRegistration(activity, worktime));
     }
 
+    //print time registation for a given date
     public void timeRegistations(Date date) {
         for(int i = 0; i <timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {

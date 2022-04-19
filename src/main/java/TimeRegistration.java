@@ -4,14 +4,14 @@ public class TimeRegistration {
     private int workedTime;
 
 
-
+    // Constructor
     public TimeRegistration(Activity activity,int workedTime) {
         this.workedActivity = activity;
         this.workedTime = workedTime;
     }
 
+    //get functions
     public int getWorkedTime() {return workedTime;}
-
     public Activity getWorkedActivity() {return workedActivity;}
 
 
