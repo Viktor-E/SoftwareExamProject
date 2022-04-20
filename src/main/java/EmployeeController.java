@@ -5,16 +5,18 @@ public class EmployeeController {
     private static ArrayList<Employee> employees = new ArrayList<Employee>();
     private static int employeeID = 0;
 
-    //TODO check name length (has to be 4)
+    //TODO check name length (has to be 4) (should be done but should test)
     //TODO remove employee
     //TODO find employee (based on name)
     //TODO in activity make sure to handle NULL
 
     //make employee object
     public static void addEmployee(String name) {
-        Employee employii = new Employee(name, employeeID);
-        employeeID++;
-        employees.add(employii);
+        if (helpclass.validateNameLength(name)) {
+            Employee employii = new Employee(name, employeeID);
+            employeeID++;
+            employees.add(employii);
+        }
     }
 
     //used for testing
@@ -27,9 +29,11 @@ public class EmployeeController {
 
     //takes employee name as input and returns the employee object
     public static Employee findEmployee(String name) {
-        for(int i = 0; i < employees.size(); i++) {
-            if(employees.get(i).getName().equals(name)) {
-                return employees.get(i);
+        if(helpclass.validateNameLength(name)) {
+            for(int i = 0; i < employees.size(); i++) {
+                if(employees.get(i).getName().equals(name)) {
+                    return employees.get(i);
+                }
             }
         }
         return null;

@@ -19,7 +19,9 @@ public class Employee {
 
     //get and setter functions
     public void setName(String name) {
-        this.name = name;
+        if(helpclass.validateNameLength(name)) {
+            this.name = name;
+        }
     }
     public String getName() {
         return name;

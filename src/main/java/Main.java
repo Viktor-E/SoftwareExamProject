@@ -9,12 +9,20 @@ public class Main {
         //test stuff
         EmployeeController.addEmployee("lol");
 
-        EmployeeController.addEmployee("joe");
+        EmployeeController.addEmployee("joe2");
 
         EmployeeController.addEmployee("mama");
 
         EmployeeController.printArray();
 
+        EmployeeController.findEmployee("lol");
+
+        EmployeeController.findEmployee("joe2").setName("joe3");
+
+        System.out.println("---");
+
+        EmployeeController.printArray();
+        /*
 
         Activity.createActivity("test", Activity.ActivityType.ANALYSE, "01-09-1996", "01-01-2000");
 
@@ -25,7 +33,7 @@ public class Main {
         Project.createProject("testProejct");
 
 
-        Employee user = EmployeeController.findEmployee("joe");
+        Employee user = EmployeeController.findEmployee("joe2");
 
         user.registerTime(helpclass.stringToDate("01-10-2000"),Activity.findActivity("test"),100);
 
@@ -47,7 +55,7 @@ public class Main {
 
         user.timeRegistations(helpclass.stringToDate("01-10-2100"));
 
-        user = EmployeeController.findEmployee("joe");
+        user = EmployeeController.findEmployee("joe2");
 
         user.registerTime(helpclass.stringToDate("01-10-2100"),Activity.findActivity("test"),300);
 
@@ -55,9 +63,11 @@ public class Main {
 
         user.timeRegistations(helpclass.stringToDate("01-10-2100"));
 
-        user = EmployeeController.findEmployee("joe");
+        user = EmployeeController.findEmployee("joe2");
 
         user.timeRegistations(helpclass.stringToDate("01-10-2100"));
 
+
+         */
     }
 }

@@ -1,4 +1,6 @@
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -39,16 +41,23 @@ public class Project {
         this.activities = null;
     }
 
+    //function for creating project
     public static void createProject(String name) {
         Project Procject1 = new Project(name);
         projects.add(Procject1);
     }
 
+    //add activtiy to a project
+    //TODO user has to be project lead
     public void addActivty(String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
-
         activities.add(Activity.createActivity(name1, type1, date1, date2));
+    }
 
-
+    //list all projects
+    public static void printProjects() {
+        for(int i = 0; i < projects.size(); i++) {
+            System.out.println(projects.get(i).name);
+        }
     }
 
 
