@@ -13,9 +13,11 @@ public class EmployeeController {
     //make employee object
     public static void addEmployee(String name) {
         if (helpclass.validateNameLength(name)) {
-            Employee employii = new Employee(name, employeeID);
+            Employee employee = new Employee(name, employeeID);
             employeeID++;
-            employees.add(employii);
+            employees.add(employee);
+            Activity.ferie.assignUserToActivity(employee);
+            Activity.sygdom.assignUserToActivity(employee);
         }
     }
 

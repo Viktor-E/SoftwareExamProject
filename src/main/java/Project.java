@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Project {
 
@@ -55,7 +56,7 @@ public class Project {
             return;
         }
         if(user1.equals(projectManager)) {
-            activities.add(Activity.createActivity(name1, type1, date1, date2));
+            activities.add(Activity.createActivity(name1, type1, date1, date2,false));
         } else {
             System.out.println("user is not project lead");
         }
@@ -92,6 +93,41 @@ public class Project {
                 System.out.println(projects.get(i).projectManager.getName());
             }
         }
+    }
+
+    public static void listAssignedActivities(Employee user){
+        for(int l = 0;l < Activity.getActivitiis().size(); l++) {
+            System.out.println(Activity.getActivitiis().get(l).getName());
+        }
+
+        for(int i = 0; i < projects.size(); i++) {
+            for(int h = 0; h < projects.get(i).activities.size(); h++) {
+                for(int g = 0; g < projects.get(i).activities.get(h).getAssignedUsers().size(); g++)
+                if(Objects.equals(projects.get(i).activities.get(h).getAssignedUsers().get(g), user)) {
+                    System.out.println(projects.get(i).activities.get(h).getName());
+                }
+            }
+        }
+    }
+
+    public static Activity findActivityInProjects(String name){
+        for(int i = 0; i < projects.size(); i++) {
+            for(int h = 0; h < projects.get(i).activities.size(); h++) {
+                    if(projects.get(i).activities.get(h).getName()==name) {
+                        return projects.get(i).activities.get(h);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Activity findActivity(String name) {
+            for(int h = 0; h < activities.size(); h++) {
+                if(activities.get(h).getName()==name) {
+                    return activities.get(h);
+                }
+            }
+        return null;
     }
 
 

@@ -26,7 +26,7 @@ public class RegisterTimeWindow extends Window  {
             case "2":{
                 registerAnothersTime();
             }break;
-                
+
             case "exit":{
                 program.currentWindow = new OverviewWindow(program);
             }break;
@@ -39,8 +39,13 @@ public class RegisterTimeWindow extends Window  {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter Date dd/mm/yyyy");
         String date = keyboard.next();
-        System.out.println("Enter activity");
-        String activity = keyboard.next();
+        System.out.println("current assigned activities: ");
+        Project.listAssignedActivities(user);
+        String activity = null;
+        while(Activity.findActivity(activity) == null) {
+            System.out.println("Enter activity");
+            activity = keyboard.next();
+        }
         System.out.println("Enter work hours");
         String hours = keyboard.next();
         String[] dates = date.split("/");
