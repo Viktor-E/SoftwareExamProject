@@ -6,38 +6,31 @@ public class Main {
 
 
     public static void main(String[] args) throws ParseException {
+        EmployeeController.addEmployee("joe2");
+
+        EmployeeController.addEmployee("mama");
+
+        Project.createProject("testProejct");
+
+        Employee user = EmployeeController.findEmployee("joe2");
+
+        Project idk = Project.findProject("testProejct");
+
+        //idk.setProjectManager(user);
+
+        idk.addActivty(user,"test", Activity.ActivityType.ANALYSE, "01-09-1996", "01-01-2000" );
+
+        Project.printProjects();
+
+
+
+        /*
+
         TestMain.start();
 
         EmployeeController.printArray();
-        /*
 
         EmployeeController.addEmployee("joe2");
-
-        Scanner myObj = new Scanner(System.in);
-
-        System.out.println("please type \"1\" to login or type \"2\" to register new user");
-
-        int start = Integer.parseInt(myObj.nextLine());
-
-        if(start == 1) {
-            System.out.println("please type your username");
-
-            String userName = myObj.nextLine();
-
-            EmployeeController.findEmployee(userName);
-
-        } else if(start == 2) {
-            System.out.println("please type a username");
-
-            String userName = myObj.nextLine();
-
-            EmployeeController.addEmployee(userName);
-        } else {
-            System.out.println("please only type 1 or 2");
-        }
-
-
-
 
         //test stuff
         EmployeeController.addEmployee("lol");

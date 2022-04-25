@@ -20,7 +20,7 @@ public class Project {
     private Date endDate;
     private int projektnummre = 0;
     private Employee projectManager;
-    private ArrayList<Activity> activities = new ArrayList<Activity>();
+    private ArrayList<Activity> activities;
 
     //TODO : make sure NULL doesn't crash
     public Project(String name) {
@@ -29,7 +29,7 @@ public class Project {
         this.endDate = null;
         this.projektnummre = currentYear+this.runner;
         this.projectManager = null;
-        this.activities = null;
+        this.activities = new ArrayList<Activity>();
     }
 
     public Project(String name, Date startDate, Date endDate) {
@@ -49,14 +49,48 @@ public class Project {
 
     //add activtiy to a project
     //TODO user has to be project lead
-    public void addActivty(String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
-        activities.add(Activity.createActivity(name1, type1, date1, date2));
+    public void addActivty(Employee user1, String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
+        if(projectManager == null) {
+            System.out.println("project has no lead");
+            return;
+        }
+        if(user1.equals(projectManager)) {
+            activities.add(Activity.createActivity(name1, type1, date1, date2));
+        } else {
+            System.out.println("user is not project lead");
+        }
+    }
+
+    public void setProjectManager(Employee user){
+        this.projectManager = user;
+    }
+
+    public static Project findProject(String projectName) {
+            for(int i = 0; i < projects.size(); i++) {
+                if(projects.get(i).getName().equals(projectName)) {
+                    return projects.get(i);
+                }
+            }
+        return null;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Employee getProjectManager(){
+        return projectManager;
     }
 
     //list all projects
     public static void printProjects() {
         for(int i = 0; i < projects.size(); i++) {
             System.out.println(projects.get(i).name);
+            if(projects.get(i).projectManager == null) {
+                System.out.println("project has no lead");
+            } else {
+                System.out.println(projects.get(i).projectManager.getName());
+            }
         }
     }
 

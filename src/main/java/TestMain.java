@@ -27,8 +27,6 @@ public class TestMain {
                System.out.println("no user with that name found! please try again");
                start();
            }
-
-
         }
         if(number == 2) {
             System.out.println("please type a username");
