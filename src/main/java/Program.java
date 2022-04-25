@@ -7,8 +7,8 @@ public class Program {
     Employee currentUser;
 
 
-    Program(ArrayList<Employee> employeeList){
-    this.employeeList = employeeList;
+    Program(){
+    this.employeeList = EmployeeController.getEmployees();
     currentWindow = new LoginWindow(this);
     }
 

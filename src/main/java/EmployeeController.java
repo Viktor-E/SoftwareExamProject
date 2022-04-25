@@ -19,6 +19,10 @@ public class EmployeeController {
         }
     }
 
+    public static ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
     //used for testing
     public static void printArray() {
         for(int i = 0; i < employees.size(); i++) {

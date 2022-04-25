@@ -10,11 +10,11 @@ public class Main {
 
         EmployeeController.addEmployee("mama");
 
-        Project.createProject("testProejct");
+        Project.createProject("testProject");
 
         Employee user = EmployeeController.findEmployee("joe2");
 
-        Project idk = Project.findProject("testProejct");
+        Project idk = Project.findProject("testProject");
 
         //idk.setProjectManager(user);
 
@@ -22,10 +22,10 @@ public class Main {
 
         Project.printProjects();
 
+        Program program = new Program();
 
 
-        /*
-
+/*
         TestMain.start();
 
         EmployeeController.printArray();
