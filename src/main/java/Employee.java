@@ -58,6 +58,10 @@ public class Employee {
         }
     }
 
+    public ArrayList<RegistrationContainer> getTimesRegistrationContainer(){
+        return timeRegistrationContainers;
+    }
+
 
 
 
