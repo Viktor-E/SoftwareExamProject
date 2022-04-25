@@ -1,9 +1,42 @@
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) throws ParseException {
+        TestMain.start();
+
+        EmployeeController.printArray();
+        /*
+
+        EmployeeController.addEmployee("joe2");
+
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("please type \"1\" to login or type \"2\" to register new user");
+
+        int start = Integer.parseInt(myObj.nextLine());
+
+        if(start == 1) {
+            System.out.println("please type your username");
+
+            String userName = myObj.nextLine();
+
+            EmployeeController.findEmployee(userName);
+
+        } else if(start == 2) {
+            System.out.println("please type a username");
+
+            String userName = myObj.nextLine();
+
+            EmployeeController.addEmployee(userName);
+        } else {
+            System.out.println("please only type 1 or 2");
+        }
+
+
 
 
         //test stuff
@@ -22,7 +55,7 @@ public class Main {
         System.out.println("---");
 
         EmployeeController.printArray();
-        /*
+
 
         Activity.createActivity("test", Activity.ActivityType.ANALYSE, "01-09-1996", "01-01-2000");
 
