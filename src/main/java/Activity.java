@@ -122,8 +122,6 @@ public class Activity {
 
 	public void assignUserToActivity(Employee user) {
 		assignedUsers.add(user);
-		System.out.println(user.getName());
-		System.out.println(assignedUsers);
 	}
 
 	public ArrayList getAssignedUsers() {

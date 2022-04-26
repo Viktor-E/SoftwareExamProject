@@ -1,16 +1,21 @@
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class LoginWindow extends Window {
 
     Scanner keyboard = new Scanner(System.in);
 
-    public LoginWindow(Program program){
+    public LoginWindow(Program program) throws ParseException {
 
     super("Type your username to login:",program);
     String input="";
     Boolean correctInput = false;
     while(!correctInput){
     input = keyboard.next();
+    if(input.length() != 4) {
+        System.out.println("Username has to be 4 characters try again:");
+        continue;
+    }
 
     for(int i = 0; i < program.employeeList.size(); i++){
 
@@ -40,7 +45,7 @@ public class LoginWindow extends Window {
     }
 
     }
-    public void login(Employee newUser){
+    public void login(Employee newUser) throws ParseException {
         program.currentUser = newUser;
         program.changeWindow(new OverviewWindow(program));
 

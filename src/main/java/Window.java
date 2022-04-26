@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Window {
@@ -17,7 +18,7 @@ public class Window {
 
     }
 
-    public void changeWindow(){
+    public void changeWindow() throws ParseException {
 
         Scanner keyboard = new Scanner(System.in);
 

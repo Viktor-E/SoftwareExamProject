@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Program {
@@ -7,7 +8,7 @@ public class Program {
     Employee currentUser;
 
 
-    Program(){
+    Program() throws ParseException {
     this.employeeList = EmployeeController.getEmployees();
     currentWindow = new LoginWindow(this);
     }
@@ -15,7 +16,7 @@ public class Program {
     public void changeWindow(Window newWindow) {
         currentWindow = newWindow;
     }
-    public void changeWindow(String number){
+    public void changeWindow(String number) throws ParseException {
 
         switch(number){
             case "1":{
