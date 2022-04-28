@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class RegisterTimeWindow extends Window  {
 
     RegisterTimeWindow(Program program) throws ParseException {
-        super("RegisterTimeWindow\n 1 to Register time \n 2 to Ask for help\n exit to return", program);
+        super("RegisterTimeWindow\n 1 to Register time \n 2 to Ask for help \n 3 to view time registrations \n exit to return", program);
         functions();
         program.currentWindow = new OverviewWindow(program);
 
@@ -31,6 +31,10 @@ public class RegisterTimeWindow extends Window  {
                 
             case "2":{
                 registerAnothersTime();
+            }break;
+
+            case "3":{
+                viewRegisteredTime();
             }break;
 
             case "exit":{
@@ -84,17 +88,22 @@ public class RegisterTimeWindow extends Window  {
         String user = keyboard.next();
         registerTime(EmployeeController.findEmployee(user));
     }
-    
-    /*
-    ArrayList of RegistrationContainer
-    RegistrationContainer:
-        - Date e.g. 2022-02-13
-        - ArrayList of TimeRegistration
-    TimeRegistration
-        Time spent
-        Activity
 
+    public void viewRegisteredTime() throws ParseException {
+        Scanner keyboard = new Scanner(System.in);
+        Date date1 = null;
+        boolean exit = false;
+        while (exit == false) {
+            System.out.println("Enter Date dd-mm-yyyy or type exit to return");
+            String date = keyboard.next();
+            if(date.equals("exit")) {
+                return;
+            }
+            date1 = helpclass.stringToDate(date);
+            if (date1 != null) {
+                program.currentUser.timeRegistations(date1);
+            }
+        }
 
-     */
-
+    }
 }

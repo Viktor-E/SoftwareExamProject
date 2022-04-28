@@ -24,7 +24,6 @@ public class LoginWindow extends Window {
             program.currentUser = program.employeeList.get(i);
             break;
             }
-
         }
 
     if(correctInput==false){
