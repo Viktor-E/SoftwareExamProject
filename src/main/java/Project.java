@@ -66,6 +66,7 @@ public class Project {
         this.projectManager = user;
     }
 
+
     public static Project findProject(String projectName) {
             for(int i = 0; i < projects.size(); i++) {
                 if(projects.get(i).getName().equals(projectName)) {
@@ -94,6 +95,15 @@ public class Project {
             }
         }
     }
+
+    public static void printProjectsWithoutLead() {
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).projectManager == null) {
+                System.out.println(projects.get(i).name);
+            }
+        }
+    }
+
 
     public static void listAssignedActivities(Employee user){
         for(int l = 0;l < Activity.getActivitiis().size(); l++) {
