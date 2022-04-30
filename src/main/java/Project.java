@@ -1,13 +1,11 @@
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
 public class Project {
 
-    private static ArrayList<Project> projects = new ArrayList<Project>();
+    protected static ArrayList<Project> projects = new ArrayList<Project>();
 
     //løbs nummer
     Date d=new Date();
@@ -44,22 +42,23 @@ public class Project {
 
     //function for creating project
     public static void createProject(String name) {
-        Project Procject1 = new Project(name);
-        projects.add(Procject1);
+        if(name == "exit") {
+            System.out.println("Name can't be exit");
+            return;
+        }
+        Project Project1 = new Project(name);
+        runner++;
+        projects.add(Project1);
     }
 
     //add activtiy to a project
     //TODO user has to be project lead
-    public void addActivty(Employee user1, String name1, Activity.ActivityType type1, String date1, String date2) throws ParseException {
-        if(projectManager == null) {
-            System.out.println("project has no lead");
-            return;
-        }
-        if(user1.equals(projectManager)) {
+    public void addActivty(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
             activities.add(Activity.createActivity(name1, type1, date1, date2,false));
-        } else {
-            System.out.println("user is not project lead");
-        }
+    }
+
+    public void addActivty2(String name1, Activity.ActivityType type1) throws ParseException {
+        activities.add(Activity.createActivity2(name1, type1,false));
     }
 
     public void setProjectManager(Employee user){
@@ -87,11 +86,13 @@ public class Project {
     //list all projects
     public static void printProjects() {
         for(int i = 0; i < projects.size(); i++) {
-            System.out.println(projects.get(i).name);
+            System.out.println("Project Name: " + projects.get(i).name);
             if(projects.get(i).projectManager == null) {
                 System.out.println("project has no lead");
+                System.out.println("-----------------------------------");
             } else {
-                System.out.println(projects.get(i).projectManager.getName());
+                System.out.println("Project manager: " + projects.get(i).projectManager.getName());
+                System.out.println("-----------------------------------");
             }
         }
     }
@@ -139,6 +140,26 @@ public class Project {
             }
         return null;
     }
+
+    public void listActivities() {
+        System.out.println("Info for project: " + name);
+        System.out.println("Start date: " + startDate + " " + "End date: " + endDate);
+        System.out.println("Project Number: " + projektnummre);
+        System.out.println("Activity info: ");
+        if(activities.size() == 0) {
+            System.out.println("Project has no activities \n");
+        }
+        for(int i = 0; i < activities.size(); i++) {
+            System.out.println("-----------------------------------");
+            System.out.println("Activity name: " + activities.get(i).getActivityName());
+            System.out.println("Activity type: " + activities.get(i).getActivityType());
+            System.out.println("Start date: " + activities.get(i).getStartDate());
+            System.out.println("End date: " + activities.get(i).getEndDate() + "\n");
+
+
+        }
+    }
+
 
 
 }

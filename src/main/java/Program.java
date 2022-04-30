@@ -20,13 +20,13 @@ public class Program {
 
         switch(number){
             case "1":{
-                currentWindow = new CalendarWindow(this);
+                currentWindow = new RegisterTimeWindow(this);
             }break;
             case "2":{
                 currentWindow = new ProjectWindow(this);
             }break;
             case "3":{
-                currentWindow = new RegisterTimeWindow(this);
+                currentWindow = new ProjectManagerWindow(this);
             }break;
             case "4":{
                 currentWindow = new LoginWindow(this);

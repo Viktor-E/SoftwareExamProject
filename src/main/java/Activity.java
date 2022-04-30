@@ -86,17 +86,22 @@ public class Activity {
 
 	//We need to make date objects to use in the constructor :)
 
-	public static Activity createActivity(String name1, ActivityType type1, String date1, String date2, boolean isglobal) throws ParseException {
+	public static Activity createActivity(String name1, ActivityType type1, Date date1, Date date2, boolean isglobal) throws ParseException {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-		Date d1 = df.parse(date1);
-		Date d2 = df.parse(date2);
-		Activity activity = new Activity(name1, type1,d1,d2,isglobal);
-
-		//for testing
-		activitiis.add(activity);
+		Activity activity = new Activity(name1, type1,date1,date2,isglobal);
 
 		return activity;
 	}
+
+	public static Activity createActivity2(String name1, ActivityType type1, boolean isglobal) throws ParseException {
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		Activity activity = new Activity(name1, type1,null,null, isglobal);
+
+
+		return activity;
+	}
+
+
 
 	public static void printActivity() {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
