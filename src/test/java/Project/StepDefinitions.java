@@ -1,9 +1,9 @@
-package dtu.calculator;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+package Project;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
 	@When("I do nothing")
@@ -15,6 +15,10 @@ public class StepDefinitions {
 	public void everything_is_okay() {
 	    assertTrue(true);
 	}
+
+	@When("Project")
+	public void test() {
+		assertNull(EmployeeController.findEmployee("Project")); }
 
 }
 
