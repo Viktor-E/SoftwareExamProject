@@ -5,5 +5,5 @@ Feature: MedarbejderOverblik
   Scenario: Medarbejder overblik
     When En medarbejder logger ind
     Then Kan medarbejderen se aktiviteter
-    And Registrere tid på aktiviteter
-    And Logge ud
+    And En medarbejder kan registrere tid på aktiviteter
+    And Medarbarbejder kan logge ud
