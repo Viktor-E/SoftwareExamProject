@@ -1,24 +1,27 @@
 package Project;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
-	@When("I do nothing")
-	public void i_do_nothing() {
-	    
+
+	@When("Projektleder skal uddelegere en aktivitet")
+	public void projektlederSkalUddelegereEnAktivitet() {
 	}
 
-	@Then("everything is okay")
-	public void everything_is_okay() {
-	    assertTrue(true);
+	@Then("Kan projektlederen se, hvilke medarbejdere, der har tid")
+	public void kanProjektlederenSeHvilkeMedarbejdereDerHarTid() {
 	}
 
-	@When("Project")
-	public void test() {
-		assertNull(EmployeeController.findEmployee("Project")); }
+	@And("Kan give aktiviteten til en medarbejder, der er ledig")
+	public void kanGiveAktivitetenTilEnMedarbejderDerErLedig() {
+	}
 
+	@Then("Vil medarbejderen få aktiviteten tildelt")
+	public void vilMedarbejderenFåAktivitetenTildelt() {
+	}
 }
 
