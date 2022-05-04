@@ -1,15 +1,19 @@
 package Project;
 
+import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
 import java.text.ParseException;
 import java.util.Scanner;
-public class LoginWindow extends Window {
+    public class LoginWindow extends Window {
 
     Scanner keyboard = new Scanner(System.in);
-
     public LoginWindow(Program program) throws ParseException {
 
     super("Type your username to login:",program);
-    String input="";
+        String input="";
     Boolean correctInput = false;
     while(!correctInput){
     input = keyboard.next();
