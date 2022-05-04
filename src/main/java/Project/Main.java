@@ -10,8 +10,8 @@ import io.cucumber.java.en.When;
 
 public class Main {
 
-
-    public static void main(String[] args) throws ParseException {
+    Program program;
+    public void main(String[] args) throws ParseException {
 
 
         //used for making permanent activities
@@ -24,7 +24,7 @@ public class Main {
 
 
 
-        Program program = new Program();
+         program = new Program();
 
 
 

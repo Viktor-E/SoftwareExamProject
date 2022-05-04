@@ -3,7 +3,7 @@ Feature: MedarbejderOverblik
   Actors: Medarbejder
 
   Scenario: Medarbejder overblik
-    When En medarbejder logger ind {correct}
+    Given En medarbejder er logget ind
     Then Kan medarbejderen se aktiviteter
     And En medarbejder kan registrere tid på aktiviteter
     And Medarbarbejder kan logge ud

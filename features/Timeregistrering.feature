@@ -3,7 +3,7 @@ Feature: Timeregistrering
   Actors: Medarbejder
 
   Scenario: Timeregistrering af medarbejder
-    Given Medarbejder har arbejdet i 3 timer
+    Given Medarbejder har arbejdet i nogle timer
     When En medarbejder er logget ind
     And Medarbejderen registrere timer på en aktivitet
     Then Bliver tiden registreret i systemet

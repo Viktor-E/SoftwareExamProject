@@ -41,7 +41,6 @@ public class Program {
             case "exit":{
                 currentWindow = new OverviewWindow(this);
             }break;
-
         }
 
     }
