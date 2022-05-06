@@ -9,3 +9,4 @@ Feature: ProjektOprettelse
     And Der skal angives starttidspunkt, hvis denne kendes
     And Der skal angives Projektleder, hvis denne kendes
     Then Vil projektet gemmes
+
