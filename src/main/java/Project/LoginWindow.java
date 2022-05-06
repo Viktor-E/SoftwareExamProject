@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 
 import java.text.ParseException;
 import java.util.Scanner;
-
     public class LoginWindow extends Window {
 
     Scanner keyboard = new Scanner(System.in);
