@@ -4,10 +4,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import io.cucumber.java.ParameterType;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 public class helpclass {
     private static DateFormat df = new SimpleDateFormat("dd-MM-yyyy");

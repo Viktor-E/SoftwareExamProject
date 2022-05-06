@@ -2,11 +2,6 @@ package Project;
 
 import java.util.ArrayList;
 import java.util.Date;
-import io.cucumber.java.ParameterType;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
 
 public class Employee {
     private String name;

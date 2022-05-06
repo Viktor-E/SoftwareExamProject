@@ -3,10 +3,6 @@ package Project;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
-import io.cucumber.java.ParameterType;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 public class RegisterTimeWindow extends Window {
 
