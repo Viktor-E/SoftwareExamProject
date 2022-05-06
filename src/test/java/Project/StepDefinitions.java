@@ -18,7 +18,17 @@ public class StepDefinitions {
 
 	@When("Project")
 	public void test() {
-		assertNull(EmployeeController.findEmployee("Project")); }
 
+	}
+
+	@When("Employee types invalid name")
+	public void employee_types_invalid_name() {
+		assertFalse(helpclass.validateNameLength("test11"));
+
+	}
+	@Then("Program returns null")
+	public void program_returns_null() {
+	}
 }
+
 

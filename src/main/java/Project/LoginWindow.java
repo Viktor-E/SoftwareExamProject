@@ -13,8 +13,7 @@ public class LoginWindow extends Window {
     Boolean correctInput = false;
     while(!correctInput){
     input = keyboard.next();
-    if(input.length() != 4) {
-        System.out.println("Username has to be 4 characters try again:");
+    if(!helpclass.validateNameLength(input)) {
         continue;
     }
 

@@ -10,13 +10,24 @@ public class Activity {
 
 
 	public static Activity ferie;
+
+	static {
+		try {
+			activitiis = new ArrayList<Activity>();
+			ferie = new Activity("ferie", ActivityType.PERMANENT, helpclass.stringToDate("01-01-0001"), helpclass.stringToDate("01-01-9999"),true);
+			sygdom = new Activity("sygdom", Activity.ActivityType.PERMANENT, helpclass.stringToDate("01-01-0001"), helpclass.stringToDate("01-01-9999"),true);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static Activity sygdom;
 
 	public static ArrayList<Activity> getActivitiis() {
 		return activitiis;
 	}
 
-	private static ArrayList<Activity> activitiis = new ArrayList<Activity>();
+	private static ArrayList<Activity> activitiis;
 
 
 	private ActivityType type;
@@ -26,6 +37,9 @@ public class Activity {
 	private int estimatedTime = 0;
 	private int workedTime;
 	private ArrayList<Employee> assignedUsers;
+
+
+
 
 
 

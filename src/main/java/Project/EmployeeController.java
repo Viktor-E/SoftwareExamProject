@@ -14,7 +14,7 @@ public class EmployeeController {
 
     //make employee object
     public static void addEmployee(String name) {
-        if (helpclass.validateNameLength(name)) {
+        if (helpclass.validateNameLength(name) && findEmployee(name) == null) {
             Employee employee = new Employee(name, employeeID);
             employeeID++;
             employees.add(employee);
