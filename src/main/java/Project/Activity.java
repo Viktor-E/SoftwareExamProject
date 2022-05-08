@@ -156,5 +156,25 @@ public class Activity {
 		return assignedUsers;
 	}
 
+	public static void assignUserToActivity(Project project, Employee employee, Activity activity) {
+			activity.assignUserToActivity(employee);
+	}
+
+	public static boolean checkAvailability(Employee employee) {
+		int count = 0;
+		for(int h = 0; h < Project.projects.size(); h++){
+			for(int g = 0; g < Project.projects.get(h).activities.size(); g++) {
+				for(int l = 0; l < Project.projects.get(h).activities.get(g).assignedUsers.size(); l++) {
+					if(Project.projects.get(h).activities.get(g).assignedUsers.get(l).equals(employee)) {
+						count++;
+					}
+				}
+			}
+		}
+		if(count < employee.getMaxActivities()) {
+			return true;
+		} return false;
+	}
+
 
 }

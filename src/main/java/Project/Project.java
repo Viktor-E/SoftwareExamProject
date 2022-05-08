@@ -17,11 +17,32 @@ public class Project {
 
     private Activity.ActivityType type;
     private String name;
+
+    public static Date getStartDate() {
+        return startDate;
+    }
+
+    public static void setStartDate(Date startDate) {
+        Project.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
     private static Date startDate;
     private Date endDate;
     private int projektnummre = 0;
     private Employee projectManager;
     protected ArrayList<Activity> activities;
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     //TODO : make sure NULL doesn't crash
     public Project(String name) {
@@ -162,6 +183,8 @@ public class Project {
             System.out.println("-----------------------------------"  + "\n");
         }
     }
+
+
 
 
 

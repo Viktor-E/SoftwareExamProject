@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class ProjectManagerWindow extends Window {
 
+    public Project workproject;
+
     ProjectManagerWindow(Program program) throws ParseException {
         super("Project Window \n 1 to view projects you manage \n 2 to add activity \n 3 to view project info \n 4 to manage projects \n exit to return",program);
         functions();
@@ -46,7 +48,7 @@ public class ProjectManagerWindow extends Window {
         }
     }
 
-    private void manageProjects() {
+    private void manageProjects() throws ParseException {
         if(viewProjects() == null) {
             System.out.println("You must be a project manager to add an activity \n");
             return;
@@ -60,11 +62,14 @@ public class ProjectManagerWindow extends Window {
                 return;
             }
             project = Project.findProject(name);
-            if(project.getProjectManager() != program.currentUser) {
+            if(project == null) {
+                project = null;
+            } else if(project.getProjectManager() != program.currentUser) {
                 project = null;
             }
         }
-        System.out.println("1. setEstimatedTime");
+        workproject = project;
+        System.out.println(" 1 to set estimated time \n 2 to assign user to a project \n 3 to change project start date \n 4 to change project start date \n 5 to change project name \n 6 to change project manager \n 7 to change activity name");
         int what = 0;
         //very ugly! probably better way to do it :)
         while(what != 1 && what != 2 && what != 3 && what != 4 && what != 5 && what != 6 && what != 7) {
@@ -80,7 +85,7 @@ public class ProjectManagerWindow extends Window {
                 setEstimatedTimeOnProject(project);
                 break;
             case 2:
-                assignUserToActivity(project);
+                assignUser(project);
                 break;
             case 3:
                 changeStartDate();
@@ -106,22 +111,93 @@ public class ProjectManagerWindow extends Window {
     }
 
     private void changeProjectManager() {
+        Scanner keyboard = new Scanner(System.in);
+        Employee newlead = null;
+        System.out.println("Please enter a employee name");
+        while(newlead == null) {
+            String name = keyboard.next();
+            newlead = EmployeeController.findEmployee(name);
+        }
+        workproject.setProjectManager(newlead);
+
 
     }
 
     private void changeProjectName() {
+        Scanner keyboard = new Scanner(System.in);
+        String name = null;
+
+        System.out.println("Enter new project name");
+        while(name == null){
+            String name1 = keyboard.next();
+
+            if(Project.findProject(name1) == null) {
+                workproject.setName(name1);
+                name = name1;
+            } else {
+                name = null;
+            }
+        }
 
     }
 
-    private void changeEndDate() {
+    private void changeEndDate() throws ParseException {
+        Scanner keyboard = new Scanner(System.in);
+        Date date = null;
+        System.out.println("Enter Date dd-mm-yyyy");
+
+        while(date == null) {
+            String name = keyboard.next();
+            date= helpclass.stringToDate(name);
+        }
+
+        workproject.setEndDate(date);
 
     }
 
-    private void changeStartDate() {
+    private void changeStartDate() throws ParseException {
+        Scanner keyboard = new Scanner(System.in);
+        Date date = null;
+        System.out.println("Enter Date dd-mm-yyyy");
+
+        while(date == null) {
+            String name = keyboard.next();
+            date= helpclass.stringToDate(name);
+        }
+
+        workproject.setStartDate(date);
     }
 
-    private void assignUserToActivity(Project project) {
-
+    private void assignUser(Project project) {
+        Scanner keyboard = new Scanner(System.in);
+        boolean bo = false;
+        Employee employee = null;
+        while (bo == false) {
+            System.out.println("Please select an employee");
+            String name = keyboard.next();
+            if(name.equals("exit")) {
+                return;
+            }
+            if(EmployeeController.findEmployee(name) != null && Activity.checkAvailability(EmployeeController.findEmployee(name)) == true) {
+                employee = EmployeeController.findEmployee(name);
+                bo = true;
+            }
+        }
+        boolean bo1 = false;
+        Activity activity = null;
+        project.listActivities();
+        while (bo1 == false) {
+            System.out.println("Please select an activity");
+            String name = keyboard.next();
+            if(name.equals("exit")) {
+                return;
+            }
+            if(project.findActivity(name) != null) {
+                activity = project.findActivity(name);
+                bo1 = true;
+            }
+        }
+        Activity.assignUserToActivity(project, employee, activity);
     }
 
     private void setEstimatedTimeOnProject(Project project) {
@@ -193,7 +269,10 @@ public class ProjectManagerWindow extends Window {
                 return;
             }
             project = Project.findProject(name);
-            if(project.getProjectManager() != program.currentUser) {
+            if(project == null) {
+                project = null;
+            }
+            else if(project.getProjectManager() != program.currentUser) {
                 project = null;
             }
         }

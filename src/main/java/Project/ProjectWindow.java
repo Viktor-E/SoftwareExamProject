@@ -58,6 +58,9 @@ public class ProjectWindow extends Window {
         boolean set = false;
         while (set == false) {
             String projectname = keyboard.next();
+            if(projectname.equals("exit")) {
+                return;
+            }
             Project project = Project.findProject(projectname);
             if (project == null) {
                 System.out.println("Project not found");
@@ -72,12 +75,20 @@ public class ProjectWindow extends Window {
 
     }
 
-    private void makeproject() {
+    public static void makeproject() {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Project name");
-        String name = keyboard.next();
-
-        Project.createProject(name);
+        Project project = null;
+        while(project == null) {
+            System.out.println("Please enter project name: ");
+            String name = keyboard.next();
+            if(Project.findProject(name) != null){
+                System.out.println("Project with that name already exists");
+                project = null;
+            } else {
+                Project.createProject(name);
+                project = Project.findProject(name);
+            }
+        }
     }
 
 }

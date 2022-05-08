@@ -14,7 +14,7 @@ public class Employee {
     public Employee(String name, int ID) {
         this.name = name;
         this.employeeid = ID;
-        this.maxHours = 0;
+        this.maxHours = 8;
         this.maxActivities = 20;
         this.timeRegistrationContainers = new ArrayList<RegistrationContainer>();
     }
@@ -58,6 +58,14 @@ public class Employee {
                 }
             }
         }
+    }
+
+    public int getMaxHours() {
+        return maxHours;
+    }
+
+    public int getMaxActivities() {
+        return maxActivities;
     }
 
     public ArrayList<RegistrationContainer> getTimesRegistrationContainer(){
