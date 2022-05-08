@@ -28,10 +28,9 @@ public class EmployeeController {
     }
 
     //used for testing
-    public static void printArray() {
+    public static void printEmployees() {
         for(int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).getName());
-            System.out.println(employees.get(i).getEmployeeid());
         }
     }
 
@@ -46,6 +45,7 @@ public class EmployeeController {
         }
         return null;
     }
+
 
 
 

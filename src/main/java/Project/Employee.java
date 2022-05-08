@@ -6,7 +6,7 @@ import java.util.Date;
 public class Employee {
     private String name;
     private int employeeid;
-    private int maxHours;
+    private int maxMinutes;
     private int maxActivities;
     private ArrayList<RegistrationContainer> timeRegistrationContainers;
 
@@ -14,7 +14,7 @@ public class Employee {
     public Employee(String name, int ID) {
         this.name = name;
         this.employeeid = ID;
-        this.maxHours = 8;
+        this.maxMinutes = 480;
         this.maxActivities = 20;
         this.timeRegistrationContainers = new ArrayList<RegistrationContainer>();
     }
@@ -53,15 +53,15 @@ public class Employee {
         for(int i = 0; i <timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
                 for(int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
-                    System.out.print("user: " + getName() + " has worked :" + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime() + " hours on ");
+                    System.out.print("user: " + getName() + " has worked : " + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime() + " minutes on ");
                     System.out.println("activity: " + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedActivity().getName());
                 }
             }
         }
     }
 
-    public int getMaxHours() {
-        return maxHours;
+    public int getMaxMinutes() {
+        return maxMinutes;
     }
 
     public int getMaxActivities() {
@@ -70,6 +70,17 @@ public class Employee {
 
     public ArrayList<RegistrationContainer> getTimesRegistrationContainer(){
         return timeRegistrationContainers;
+    }
+
+    public int remainingHours(Date date) {
+        int count = 0;
+        for(int i = 0; i <timeRegistrationContainers.size(); i++) {
+            if (timeRegistrationContainers.get(i).getDate().equals(date)) {
+                for(int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
+                   count = count + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime();
+                }
+            }
+        } return count;
     }
 
 

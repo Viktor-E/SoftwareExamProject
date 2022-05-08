@@ -184,6 +184,14 @@ public class Project {
         }
     }
 
+    //Used to check if a project has a with the same activity name since they can't have the same name
+    public boolean checkIfActivityExists(String activity) {
+        for(int i = 0; i < activities.size(); i++){
+            if(activities.get(i).getName().equals(activity)){
+                return true;
+            }
+        } return false;
+    }
 
 
 

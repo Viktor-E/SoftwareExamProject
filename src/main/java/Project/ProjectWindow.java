@@ -49,6 +49,9 @@ public class ProjectWindow extends Window {
         Employee user = null;
         while(user == null) {
             System.out.println("User you want to make project manager:");
+            System.out.println("-----------------------------------");
+            EmployeeController.printEmployees();
+            System.out.println("-----------------------------------");
             String name = keyboard.next();
             user = EmployeeController.findEmployee(name);
         }

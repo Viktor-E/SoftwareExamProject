@@ -62,7 +62,6 @@ public class RegisterTimeWindow extends Window {
             }
         }
 
-        //TODO : has to be assigned!!!!!!!!
         System.out.println("current assigned activities: ");
         Project.listAssignedActivities(user);
         String activity = null;
@@ -77,10 +76,14 @@ public class RegisterTimeWindow extends Window {
             hours = keyboard.next();
             workhour = true;
             try {
-                Integer.parseInt(hours);
+               int i = Integer.parseInt(hours);
+               if(i < 0) {
+                   workhour = false;
+               }
             } catch(NumberFormatException e) {
                 workhour = false;
             }
+
         }
         String[] dates = date.split("-");
         user.registerTime(new Date(Integer.parseInt(dates[2]) - 1900, Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[0])), Activity.findActivity(activity), Integer.parseInt(hours));
@@ -105,6 +108,8 @@ public class RegisterTimeWindow extends Window {
             }
             date1 = helpclass.stringToDate(date);
             if (date1 != null) {
+                System.out.println("Time registations for " + date);
+                System.out.println("User has registered " + program.currentUser.remainingHours(date1) + " out of " + program.currentUser.getMaxMinutes() + " minutes");
                 program.currentUser.timeRegistations(date1);
             }
         }

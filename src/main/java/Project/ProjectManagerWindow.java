@@ -174,6 +174,9 @@ public class ProjectManagerWindow extends Window {
         Employee employee = null;
         while (bo == false) {
             System.out.println("Please select an employee");
+            System.out.println("-----------------------------------");
+            EmployeeController.printEmployees();
+            System.out.println("-----------------------------------");
             String name = keyboard.next();
             if(name.equals("exit")) {
                 return;
@@ -276,8 +279,16 @@ public class ProjectManagerWindow extends Window {
                 project = null;
             }
         }
+        workproject = project;
         System.out.println("Please enter the name of the activity: ");
-        activityName = keyboard.next();
+        boolean test = true;
+        while(test == true) {
+            activityName = keyboard.next();
+            test = workproject.checkIfActivityExists(activityName);
+            if(test == true) {
+                System.out.println("That name is already in use");
+            }
+        }
         System.out.println("Chose type of activity: ");
         int i = 1;
         for (Activity.ActivityType myVar : Activity.ActivityType.values()) {
