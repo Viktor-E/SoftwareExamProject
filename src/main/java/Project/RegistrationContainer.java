@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class RegistrationContainer {
 
-    private ArrayList<TimeRegistration> timeRegistration;
+    public ArrayList<TimeRegistration> timeRegistration;
     private Date workedDate;
 
     // Constructor
