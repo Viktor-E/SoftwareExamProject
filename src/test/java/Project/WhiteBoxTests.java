@@ -10,13 +10,23 @@ public class WhiteBoxTests {
     private static String name;
 
     @Test
-    public void Test4lettername() {
+    public void TestNameIs4Letters() {
         name = "Test";
         assertTrue(helpclass.validateNameLength(name));
     }
     @Test
-    public void Test5lettername(){
+    public void TestNameIs5Letters(){
         name = "Tests";
+        assertFalse(helpclass.validateNameLength(name));
+    }
+    @Test
+    public void TestNameHasNumber(){
+        name = "Tes1";
+        assertTrue(helpclass.validateNameLength(name));
+    }
+    @Test
+    public void TestIs3Letters(){
+        name = "Tes";
         assertFalse(helpclass.validateNameLength(name));
     }
 
