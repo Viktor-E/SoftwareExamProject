@@ -44,6 +44,10 @@ public class Project {
         this.name = name;
     }
 
+    public int getProjektnummre() {
+        return projektnummre;
+    }
+
     //TODO : make sure NULL doesn't crash
     public Project(String name) {
         this.name = name;
@@ -65,6 +69,10 @@ public class Project {
 
     //function for creating project
     public static void createProject(String name) {
+        if(Project.findProject(name) != null){
+            System.out.println("name in use");
+            return;
+        }
         if(name == "exit") {
             System.out.println("Name can't be exit");
             return;
