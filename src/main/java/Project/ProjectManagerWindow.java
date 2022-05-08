@@ -358,11 +358,11 @@ public class ProjectManagerWindow extends Window {
                         Date2 = date2;
                     }
                 }
-                project.addActivty(activityName, acttype,Date1,Date2);
+                project.addActivity(activityName, acttype,Date1,Date2);
 
                 break;
             case 2:
-                project.addActivty2(activityName, acttype);
+                project.addActivity2(activityName, acttype);
                 break;
         }
 

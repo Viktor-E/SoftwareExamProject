@@ -78,7 +78,7 @@ public class LoginSteps {
 //    public void do_nothing(){}
 
     @When("creating activity")
-    public void add_activity() throws ParseException {Project.findProject("test").addActivty2("test",Activity.ActivityType.TEST_MED_MERE);}
+    public void add_activity() throws ParseException {Project.findProject("test").addActivity2("test",Activity.ActivityType.TEST_MED_MERE);}
 
     @Then("activity is created")
     public void activity_created() {assertNotNull(Activity.findActivity("test")); }

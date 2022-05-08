@@ -18,12 +18,14 @@ public class helpclass {
     }
 
     public static boolean validateNameLength(String name) {
+
         try {
             if (name.length() != 4) {
                 System.out.println("Username has to be 4 characters");
                 return false;
             }
             return true;
+
         } catch (NumberFormatException e) {
             System.out.println("Username has to be 4 characters");
             return false;

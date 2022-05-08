@@ -76,11 +76,11 @@ public class Project {
 
     //add activtiy to a project
     //TODO user has to be project lead
-    public void addActivty(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
-            activities.add(Activity.createActivity(name1, type1, date1, date2,false));
+            public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
+                 activities.add(Activity.createActivity(name1, type1, date1, date2,false));
     }
 
-    public void addActivty2(String name1, Activity.ActivityType type1) throws ParseException {
+    public void addActivity2(String name1, Activity.ActivityType type1) throws ParseException {
         activities.add(Activity.createActivity2(name1, type1,false));
     }
 
