@@ -5,6 +5,8 @@ Feature: name and login
   Scenario: testing name validator
     When employee enters a four letter name
     Then Name is valid
+
+  Scenario:
     When employee enters a none four letter name
     Then Name is invalid
 
