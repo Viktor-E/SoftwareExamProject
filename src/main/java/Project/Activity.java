@@ -108,9 +108,18 @@ public class Activity {
 	//We need to make date objects to use in the constructor :)
 
 	public static Activity createActivity(String name1, ActivityType type1, Date date1, Date date2, boolean isglobal) throws ParseException {
+
+		boolean result = false;
+		for (ActivityType a:ActivityType.values()){
+			if(a.equals(type1))
+				result=true;
+
+		}
+		assert name1!="exit"&&result;
+
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Activity activity = new Activity(name1, type1,date1,date2,isglobal);
-
+		assert true;
 		return activity;
 	}
 
