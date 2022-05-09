@@ -117,6 +117,10 @@ public class Activity {
         this.endDate = d2;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //We need to make date objects to use in the constructor :)
 
     //create and return activity

@@ -1,5 +1,7 @@
 package Project;
 
+import io.cucumber.java.en_old.Ac;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
@@ -74,10 +76,10 @@ public class ProjectManagerWindow extends Window {
             }
         }
         workproject = project;
-        System.out.println(" 1 to set estimated time \n 2 to assign user to a project \n 3 to change project start date \n 4 to change project start date \n 5 to change project name \n 6 to change project manager \n 7 to change activity name");
+        System.out.println(" 1 to set estimated time \n 2 to assign user to a project \n 3 to change project start date \n 4 to change project end date \n 5 to change project name \n 6 to change project manager \n 7 to change activity name \n 8 to return");
         int what = 0;
         //very ugly! probably better way to do it :)
-        while (what != 1 && what != 2 && what != 3 && what != 4 && what != 5 && what != 6 && what != 7) {
+        while (what != 1 && what != 2 && what != 3 && what != 4 && what != 5 && what != 6 && what != 7 && what != 8) {
             try {
                 what = Integer.parseInt(keyboard.next());
             } catch (NumberFormatException e) {
@@ -105,14 +107,45 @@ public class ProjectManagerWindow extends Window {
                 changeProjectManager();
                 break;
             case 7:
-                changeActivityName();
+                changeActivityName(project);
                 break;
+            case 8: {
+                program.currentWindow = new OverviewWindow(program);
+            }
         }
     }
 
-    //TODO : FINISH THIS!
-    private void changeActivityName() {
 
+    private void changeActivityName(Project project) {
+        Scanner keyboard = new Scanner(System.in);
+        String newname = null;
+        boolean bo1 = false;
+        Activity activity = null;
+        project.listActivities();
+        while (bo1 == false) {
+            System.out.println("Please select an activity");
+            String name = keyboard.next();
+            if (name.equals("exit")) {
+                return;
+            }
+            if (project.findActivity(name) != null) {
+                activity = project.findActivity(name);
+                bo1 = true;
+            }
+        }
+        System.out.println("Please enter a new name");
+        while (newname == null) {
+            String name2 = keyboard.next();
+            if (project.findActivity(name2) == null) {
+                if (name2.equals("exit")) {
+                    newname = null;
+                    System.out.println("name can not be \"exit\"");
+                } else {
+                    activity.setName(name2);
+                    newname = "0";
+                }
+            }
+        }
     }
 
     private void changeProjectManager() {
@@ -154,6 +187,16 @@ public class ProjectManagerWindow extends Window {
         while (date == null) {
             String name = keyboard.next();
             date = helpclass.stringToDate(name);
+            if (date == null) {
+                System.out.println("invalid date");
+            } else {
+                if (workproject.getStartDate() == null) {
+                    workproject.setEndDate(date);
+                } else if (workproject.getStartDate().after(date)) {
+                    System.out.println("end date can not be after start date");
+                    date = null;
+                }
+            }
         }
 
         workproject.setEndDate(date);
@@ -168,7 +211,18 @@ public class ProjectManagerWindow extends Window {
         while (date == null) {
             String name = keyboard.next();
             date = helpclass.stringToDate(name);
+            if (date == null) {
+                System.out.println("invalid date");
+            } else {
+                if (workproject.getEndDate() == null) {
+                    workproject.setStartDate(date);
+                } else if (workproject.getEndDate().before(date)) {
+                    System.out.println("start date can not be after end date");
+                    date = null;
+                }
+            }
         }
+
 
         workproject.setStartDate(date);
     }
@@ -344,24 +398,34 @@ public class ProjectManagerWindow extends Window {
 
         switch (yesno) {
             case 1:
-                System.out.println("Please enter Start date");
-                Date date1 = null;
-                while (date1 == null) {
-                    String date = keyboard.next();
-                    date1 = helpclass.stringToDate(date);
-                    if (date1 != null) {
-                        Date1 = date1;
+                boolean dates = false;
+                while (dates == false) {
+                    System.out.println("Please enter Start date");
+                    Date date1 = null;
+                    while (date1 == null) {
+                        String date = keyboard.next();
+                        date1 = helpclass.stringToDate(date);
+                        if (date1 != null) {
+                            Date1 = date1;
+                        }
+                    }
+                    System.out.println("Please enter End date");
+                    Date date2 = null;
+                    while (date2 == null) {
+                        String date = keyboard.next();
+                        date2 = helpclass.stringToDate(date);
+                        if (date2 != null) {
+                            Date2 = date2;
+                        }
+                    }
+                    if (Date2.before(date1)) {
+                        System.out.println("End date can be after start date");
+                        dates = false;
+                    } else {
+                        dates = true;
                     }
                 }
-                System.out.println("Please enter End date");
-                Date date2 = null;
-                while (date2 == null) {
-                    String date = keyboard.next();
-                    date2 = helpclass.stringToDate(date);
-                    if (date2 != null) {
-                        Date2 = date2;
-                    }
-                }
+
                 project.addActivity(activityName, acttype, Date1, Date2);
 
                 break;

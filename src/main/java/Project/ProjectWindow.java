@@ -21,8 +21,6 @@ public class ProjectWindow extends Window {
 
             case "1": {
                 makeproject();
-
-
             }
             break;
 
@@ -34,7 +32,6 @@ public class ProjectWindow extends Window {
 
             case "3": {
                 addProjectLead();
-
             }
             break;
 
