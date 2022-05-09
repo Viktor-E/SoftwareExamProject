@@ -13,7 +13,9 @@ public class LoginWindow extends Window {
     Boolean correctInput = false;
     while(!correctInput){
     input = keyboard.next();
-    if(!helpclass.validateNameLength(input)) {
+    if(input.equals("exit")) {
+        return;
+    } else if(!helpclass.validateNameLength(input)) {
         continue;
     }
 

@@ -84,6 +84,9 @@ public class ProjectWindow extends Window {
         while(project == null) {
             System.out.println("Please enter project name: ");
             String name = keyboard.next();
+            if(name.equals("exit")) {
+                return;
+            }
             if(Project.findProject(name) != null){
                 System.out.println("Project with that name already exists");
                 project = null;
