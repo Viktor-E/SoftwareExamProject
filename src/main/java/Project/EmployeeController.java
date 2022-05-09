@@ -10,7 +10,7 @@ public class EmployeeController {
     //make employee object
     public static void addEmployee(String name) {
         if (helpclass.validateNameLength(name) && findEmployee(name) == null) {
-            Employee employee = new Employee(name, employeeID);
+            Employee employee = new Employee(name);
             employeeID++;
             employees.add(employee);
             Activity.ferie.assignUserToActivity(employee);

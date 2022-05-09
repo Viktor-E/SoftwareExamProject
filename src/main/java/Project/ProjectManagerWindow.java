@@ -152,6 +152,9 @@ public class ProjectManagerWindow extends Window {
         Scanner keyboard = new Scanner(System.in);
         Employee newlead = null;
         System.out.println("Please enter a employee name");
+        System.out.println("-----------------------------------");
+        EmployeeController.printEmployees();
+        System.out.println("-----------------------------------");
         while (newlead == null) {
             String name = keyboard.next();
             newlead = EmployeeController.findEmployee(name);
@@ -305,6 +308,9 @@ public class ProjectManagerWindow extends Window {
                 return;
             }
             project = Project.findProject(name);
+            if(project == null) {
+
+            } else
             if (project.getProjectManager() != program.currentUser) {
                 project = null;
             }

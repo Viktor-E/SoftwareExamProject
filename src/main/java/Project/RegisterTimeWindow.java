@@ -74,8 +74,8 @@ public class RegisterTimeWindow extends Window {
             activity = keyboard.next();
         }
         String hours = "0";
-        workhour = true;
-        while (workhour) {
+        workhour = false;
+        while (!workhour) {
             System.out.println("Enter work mins");
             hours = keyboard.next();
             try {
@@ -92,7 +92,10 @@ public class RegisterTimeWindow extends Window {
 
     public void registerAnothersTime() throws ParseException {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter user to register time");
+        System.out.println("Enter user you want to register time for");
+        System.out.println("-----------------------------------");
+        EmployeeController.printEmployees();
+        System.out.println("-----------------------------------");
         Employee employee = null;
         while (employee == null) {
             String user = keyboard.next();
@@ -120,8 +123,8 @@ public class RegisterTimeWindow extends Window {
             activity = Activity.findActivity(act);
         }
         String hours = "0";
-        workhour = true;
-        while (workhour) {
+        workhour = false;
+        while (!workhour) {
             System.out.println("Enter work mins");
             hours = keyboard.next();
             try {

@@ -5,15 +5,13 @@ import java.util.Date;
 
 public class Employee {
     private String name;
-    private int employeeid;
     private int maxMinutes;
     private int maxActivities;
     private ArrayList<RegistrationContainer> timeRegistrationContainers;
 
     // Constructor
-    public Employee(String name, int ID) {
+    public Employee(String name) {
         this.name = name;
-        this.employeeid = ID;
         this.maxMinutes = 480;
         this.maxActivities = 20;
         this.timeRegistrationContainers = new ArrayList<RegistrationContainer>();
@@ -28,14 +26,6 @@ public class Employee {
 
     public String getName() {
         return name;
-    }
-
-    public int getEmployeeid() {
-        return employeeid;
-    }
-
-    public void setEmployeeid(int employeeid) {
-        this.employeeid = employeeid;
     }
 
     //function for making a timeRegistrationContainer

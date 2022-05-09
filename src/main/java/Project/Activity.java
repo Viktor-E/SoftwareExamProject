@@ -97,10 +97,6 @@ public class Activity {
         return estimatedTime;
     }
 
-    public void setActivityName(String name) {
-        this.name = name;
-    }
-
     public void setEstimatedTime(int time) {
         this.estimatedTime = time;
     }
