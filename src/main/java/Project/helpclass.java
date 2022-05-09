@@ -38,7 +38,7 @@ public class helpclass {
 
     //check if the amount of time is between 0 and expected work minutes
     public static boolean checkWorkHours(int i, Employee employee) {
-        if (i > 0 && i < employee.getMaxMinutes()) {
+        if (i < 0 || i > employee.getMaxMinutes()) {
             return false;
         }
         return true;

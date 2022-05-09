@@ -53,15 +53,6 @@ public class LoginSteps {
     @Then("project exists")
     public void check_project() {assertNotNull(Project.findProject("test"));}
 
-
-    @Given("activity")
-    public void create_activity() throws ParseException {Activity.createActivity2("test",Activity.ActivityType.TEST_MED_MERE,true);}
-    @When("user register time")
-    public void register_time() {EmployeeController.findEmployee("Test").registerTime(new Date(2002,05,22), Activity.findActivity("test"),3);}
-    @Then("time is registered")
-    public void time_registered(){assertTrue(EmployeeController.findEmployee("Test").getTimesRegistrationContainer().get(0).getTimeRegistration().size()>0);}
-
-
     @Given("user is assigned to activity")
     public void user_assigned(){Activity.findActivity("test").assignUserToActivity(EmployeeController.findEmployee("test"));}
     @Then("the user is listed")

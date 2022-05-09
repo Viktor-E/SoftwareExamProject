@@ -69,7 +69,7 @@ public class Project {
 
     //function for creating project
     public static void createProject(String name) {
-        assert name != "exit" && Project.findProject(name) != null;
+        assert name != null;
         if(Project.findProject(name) != null){
             System.out.println("name in use");
             return;
