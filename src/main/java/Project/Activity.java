@@ -60,10 +60,6 @@ public class Activity {
         }
     }
 
-    public void setName(String name2) {
-        this.name = name2;
-    }
-
 
     public enum ActivityType {
         KRAVSPECIFIKATION,
@@ -77,6 +73,10 @@ public class Activity {
 
 
     //get and setters
+    public void setName(String name2) {
+        this.name = name2;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
@@ -161,7 +161,7 @@ public class Activity {
         return name;
     }
 
-    //TODO make another loop to check in projects
+
     public static Activity findActivity(String name) {
         for (int i = 0; i < activitiis.size(); i++) {
             if (activitiis.get(i).getName().equals(name)) {
@@ -189,6 +189,7 @@ public class Activity {
         activity.assignUserToActivity(employee);
     }
 
+    //checks all activities a user is assigned to and returns true if the number is less than the max allowed activities
     public static boolean checkAvailability(Employee employee) {
         int count = 0;
         for (int h = 0; h < Project.projects.size(); h++) {

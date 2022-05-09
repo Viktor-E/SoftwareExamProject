@@ -9,10 +9,10 @@ public class Project {
 
     protected static ArrayList<Project> projects = new ArrayList<Project>();
 
-    //løbs nummer
-    Date d=new Date();
-    int year=d.getYear();
-    int currentYear=(year-100)*1000;
+    //project ID
+    Date d = new Date();
+    int year = d.getYear();
+    int currentYear = (year - 100) * 1000;
     private static int runner = 0;
 
     private Activity.ActivityType type;
@@ -86,14 +86,14 @@ public class Project {
 
     }
 
-    //add activtiy to a project
-    //TODO user has to be project lead
-            public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
-                 activities.add(Activity.createActivity(name1, type1, date1, date2,false));
+    //add activity to a project if start and end date is known
+    public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
+        activities.add(Activity.createActivity(name1, type1, date1, date2, false));
     }
 
+    //add activity to a project if start and end date is unknown
     public void addActivity2(String name1, Activity.ActivityType type1) throws ParseException {
-        activities.add(Activity.createActivity2(name1, type1,false));
+        activities.add(Activity.createActivity2(name1, type1, false));
     }
 
     public void setProjectManager(Employee user){
