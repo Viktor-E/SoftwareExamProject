@@ -69,6 +69,7 @@ public class Project {
 
     //function for creating project
     public static void createProject(String name) {
+        assert name != "exit" && Project.findProject(name) != null;
         if(Project.findProject(name) != null){
             System.out.println("name in use");
             return;
@@ -80,6 +81,9 @@ public class Project {
         Project Project1 = new Project(name);
         runner++;
         projects.add(Project1);
+        assert projects.get(projects.size()-1)==Project1;
+
+
     }
 
     //add activtiy to a project

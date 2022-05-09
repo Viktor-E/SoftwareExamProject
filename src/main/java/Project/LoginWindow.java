@@ -1,5 +1,7 @@
 package Project;
 
+import org.junit.Assert;
+
 import java.text.ParseException;
 import java.util.Scanner;
 public class LoginWindow extends Window {
@@ -9,11 +11,13 @@ public class LoginWindow extends Window {
     public LoginWindow(Program program) throws ParseException {
 
     super("Type your username to login:",program);
+    assert program.currentUser == null;
+
     String input="";
     Boolean correctInput = false;
     while(!correctInput){
     input = keyboard.next();
-    if(input.equals("exit")) {
+        if(input.equals("exit")) {
         return;
     } else if(!helpclass.validateNameLength(input)) {
         continue;
@@ -26,6 +30,7 @@ public class LoginWindow extends Window {
             program.currentUser = program.employeeList.get(i);
             break;
             }
+        assert program.currentUser == program.currentUser;
         }
 
     if(correctInput==false){
