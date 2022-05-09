@@ -19,18 +19,21 @@ public class helpclass {
 
     //check that a username is 4 characters long
     public static boolean validateNameLength(String name) {
-
+        assert name.length()==4;
+        boolean result = true;
         try {
             if (name.length() != 4) {
                 System.out.println("Username has to be 4 characters");
-                return false;
+                result = false;
             }
-            return true;
 
         } catch (NumberFormatException e) {
             System.out.println("Username has to be 4 characters");
-            return false;
+            result = false;
         }
+        assert result ==true || result == false;
+        return result;
+
     }
 
     //check if the amount of time is between 0 and expected work minutes
