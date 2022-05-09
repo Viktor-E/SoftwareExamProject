@@ -3,6 +3,7 @@ package Project;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+// Troels
 public class Program {
 
     ArrayList<Employee> employeeList;

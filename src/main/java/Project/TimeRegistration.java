@@ -1,5 +1,6 @@
 package Project;
 
+// Michael
 public class TimeRegistration {
 
     private Activity workedActivity;

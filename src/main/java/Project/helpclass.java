@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// Viktor
 public class helpclass {
     private static DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     static String regex = "[0-9]{1,2}-[0-9]{1,2}-[0-9]{1,4}";

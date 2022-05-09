@@ -8,7 +8,7 @@ import java.util.Date;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+ // Troels
 public class WhiteBoxTests {
 
     private static String name;

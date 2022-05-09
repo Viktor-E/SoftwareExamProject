@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
+// Viktor
 public class Project {
 
     protected static ArrayList<Project> projects = new ArrayList<Project>();

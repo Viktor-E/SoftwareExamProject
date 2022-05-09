@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 
+// Michael
 public class ProjectManagerWindow extends Window {
 
     public Project workproject;

@@ -3,6 +3,7 @@ package Project;
 import java.text.ParseException;
 import java.util.Scanner;
 
+// Troels
 public class Window {
 
     String startMessage;

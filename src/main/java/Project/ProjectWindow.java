@@ -3,6 +3,7 @@ package Project;
 import java.text.ParseException;
 import java.util.Scanner;
 
+// Troels
 public class ProjectWindow extends Window {
 
     ProjectWindow(Program program) throws ParseException {

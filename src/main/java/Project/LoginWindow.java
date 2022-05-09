@@ -4,6 +4,8 @@ import org.junit.Assert;
 
 import java.text.ParseException;
 import java.util.Scanner;
+
+// Michael
 public class LoginWindow extends Window {
 
     Scanner keyboard = new Scanner(System.in);

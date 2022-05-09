@@ -3,6 +3,7 @@ package Project;
 import java.util.ArrayList;
 import java.util.Date;
 
+// Viktor
 public class Employee {
     private String name;
     private int maxMinutes;
