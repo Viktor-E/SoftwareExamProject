@@ -70,17 +70,14 @@ public class RegisterTimeWindow extends Window {
             activity = keyboard.next();
         }
         String hours = "0";
-        workhour = false;
-        while (!workhour){
+        workhour = true;
+        while (workhour){
             System.out.println("Enter work mins");
             hours = keyboard.next();
-            workhour = true;
             try {
-               int i = Integer.parseInt(hours);
-               if(i < 0) {
-                   workhour = false;
-               }
-            } catch(NumberFormatException e) {
+                int i = Integer.parseInt(hours);
+                workhour = helpclass.checkWorkHours(i,program.currentUser);
+            } catch (NumberFormatException e) {
                 workhour = false;
             }
 
@@ -118,16 +115,13 @@ public class RegisterTimeWindow extends Window {
             activity = Activity.findActivity(act);
         }
         String hours = "0";
-        workhour = false;
-        while (!workhour) {
+        workhour = true;
+        while (workhour) {
             System.out.println("Enter work mins");
             hours = keyboard.next();
-            workhour = true;
             try {
                 int i = Integer.parseInt(hours);
-                if (i < 0) {
-                    workhour = false;
-                }
+                workhour = helpclass.checkWorkHours(i,program.currentUser);
             } catch (NumberFormatException e) {
                 workhour = false;
             }
@@ -156,4 +150,5 @@ public class RegisterTimeWindow extends Window {
         }
 
     }
+
 }

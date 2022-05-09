@@ -32,6 +32,15 @@ public class helpclass {
         }
     }
 
+    //max time is 600 min
+    public static boolean checkWorkHours(int i, Employee employee) {
+        if (i > 0 && i < employee.getMaxMinutes()){
+            return false;
+        }
+
+            return true;
+
+    }
 
 
 }
