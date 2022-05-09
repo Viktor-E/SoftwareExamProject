@@ -64,8 +64,12 @@ public class Activity {
 		}
 	}
 
+    public void setName(String name2) {
+		this.name = name2;
+    }
 
-	public enum ActivityType {
+
+    public enum ActivityType {
 	KRAVSPECIFIKATION,
 	PROJEKTLEDELSE,
 	ANALYSE,

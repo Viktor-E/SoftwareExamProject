@@ -7,3 +7,9 @@ Feature: register time
     Given activity
     When user register time
     Then time is registered
+
+  Scenario: User tries to register a negative time
+    Given there is a user with the name Test
+    Given activity
+    When user enters negative time register time
+    Then time is not registered

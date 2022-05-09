@@ -19,7 +19,7 @@ public class helpclass {
 
     //check that a username is 4 characters long
     public static boolean validateNameLength(String name) {
-        assert name.length()==4;
+        assert name != null;
         boolean result = true;
         try {
             if (name.length() != 4) {
