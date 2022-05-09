@@ -7,11 +7,6 @@ public class EmployeeController {
     private static ArrayList<Employee> employees = new ArrayList<Employee>();
     private static int employeeID = 0;
 
-    //TODO check name length (has to be 4) (should be done but should test)
-    //TODO remove employee
-    //TODO find employee (based on name)
-    //TODO in activity make sure to handle NULL
-
     //make employee object
     public static void addEmployee(String name) {
         if (helpclass.validateNameLength(name) && findEmployee(name) == null) {
@@ -27,7 +22,7 @@ public class EmployeeController {
         return employees;
     }
 
-    //used for testing
+    //print all employees names
     public static void printEmployees() {
         for(int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).getName());

@@ -27,10 +27,8 @@ public class RegisterTimeWindow extends Window {
             
             case "1":{
                 registerTime(program.currentUser);
-
-
             }break;
-                
+
             case "2":{
                 registerAnothersTime();
             }break;
@@ -46,7 +44,8 @@ public class RegisterTimeWindow extends Window {
             
         }
     }
-    
+
+
     public void  registerTime(Employee user) throws ParseException {
         Scanner keyboard = new Scanner(System.in);
         String date = null;

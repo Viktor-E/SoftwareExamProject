@@ -103,6 +103,7 @@ public class Activity {
 
 	//We need to make date objects to use in the constructor :)
 
+	//create and return activity
 	public static Activity createActivity(String name1, ActivityType type1, Date date1, Date date2, boolean isglobal) throws ParseException {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Activity activity = new Activity(name1, type1,date1,date2,isglobal);
@@ -118,8 +119,6 @@ public class Activity {
 		return activity;
 	}
 
-
-
 	public static void printActivity() {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		for(int i = 0; i < activitiis.size(); i++) {
@@ -132,7 +131,7 @@ public class Activity {
 		return name;
 	}
 
-	//TODO make another loop to check in projects
+
 	public static Activity findActivity(String name) {
 		for(int i = 0; i < activitiis.size(); i++) {
 			if(activitiis.get(i).getName().equals(name)) {
@@ -160,6 +159,7 @@ public class Activity {
 			activity.assignUserToActivity(employee);
 	}
 
+	//checks all activities a user is assigned to and returns true if the number is less than the max allowed activities
 	public static boolean checkAvailability(Employee employee) {
 		int count = 0;
 		for(int h = 0; h < Project.projects.size(); h++){

@@ -9,7 +9,7 @@ public class Project {
 
     protected static ArrayList<Project> projects = new ArrayList<Project>();
 
-    //løbs nummer
+    //project ID
     Date d=new Date();
     int year=d.getYear();
     int currentYear=(year-100)*1000;
@@ -17,22 +17,6 @@ public class Project {
 
     private Activity.ActivityType type;
     private String name;
-
-    public static Date getStartDate() {
-        return startDate;
-    }
-
-    public static void setStartDate(Date startDate) {
-        Project.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
 
     private static Date startDate;
     private Date endDate;
@@ -43,12 +27,32 @@ public class Project {
     public void setName(String name) {
         this.name = name;
     }
-
     public int getProjektnummre() {
         return projektnummre;
     }
+    public void setProjectManager(Employee user){
+        this.projectManager = user;
+    }
+    public String getName() {
+        return name;
+    }
+    public Employee getProjectManager(){
+        return projectManager;
+    }
+    public static Date getStartDate() {
+        return startDate;
+    }
+    public static void setStartDate(Date startDate) {
+        Project.startDate = startDate;
+    }
+    public Date getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
-    //TODO : make sure NULL doesn't crash
+    //constructor 1
     public Project(String name) {
         this.name = name;
         this.startDate = null;
@@ -58,6 +62,7 @@ public class Project {
         this.activities = new ArrayList<Activity>();
     }
 
+    //constructor 2 with dates
     public Project(String name, Date startDate, Date endDate) {
         this.name = name;
         this.startDate = null;
@@ -82,19 +87,17 @@ public class Project {
         projects.add(Project1);
     }
 
-    //add activtiy to a project
-    //TODO user has to be project lead
+    //add activity to a project if start and end date is known
             public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
                  activities.add(Activity.createActivity(name1, type1, date1, date2,false));
     }
 
+    //add activity to a project if start and end date is unknown
     public void addActivity2(String name1, Activity.ActivityType type1) throws ParseException {
         activities.add(Activity.createActivity2(name1, type1,false));
     }
 
-    public void setProjectManager(Employee user){
-        this.projectManager = user;
-    }
+
 
 
     public static Project findProject(String projectName) {
@@ -106,15 +109,7 @@ public class Project {
         return null;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Employee getProjectManager(){
-        return projectManager;
-    }
-
-    //list all projects
+    //print all projects
     public static void printProjects() {
         for(int i = 0; i < projects.size(); i++) {
             System.out.println("Project Name: " + projects.get(i).name);

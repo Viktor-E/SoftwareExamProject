@@ -168,6 +168,7 @@ public class ProjectManagerWindow extends Window {
         workproject.setStartDate(date);
     }
 
+    //assign user to activity
     private void assignUser(Project project) {
         Scanner keyboard = new Scanner(System.in);
         boolean bo = false;
@@ -228,7 +229,6 @@ public class ProjectManagerWindow extends Window {
                 System.out.println("invalid input");
             }
         }
-
         activity.setEstimatedTime(time);
     }
 

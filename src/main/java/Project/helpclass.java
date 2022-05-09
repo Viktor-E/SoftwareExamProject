@@ -17,6 +17,7 @@ public class helpclass {
         } else return null;
     }
 
+    //check that a username is 4 characters long
     public static boolean validateNameLength(String name) {
 
         try {
@@ -32,15 +33,11 @@ public class helpclass {
         }
     }
 
-    //max time is 600 min
+    //check if the amount of time is between 0 and expected work minutes
     public static boolean checkWorkHours(int i, Employee employee) {
         if (i > 0 && i < employee.getMaxMinutes()){
             return false;
         }
-
             return true;
-
     }
-
-
 }
