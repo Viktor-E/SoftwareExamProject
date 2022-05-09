@@ -24,24 +24,20 @@ public class EmployeeController {
 
     //print all employees names
     public static void printEmployees() {
-        for(int i = 0; i < employees.size(); i++) {
+        for (int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).getName());
         }
     }
 
     //takes employee name as input and returns the employee object
     public static Employee findEmployee(String name) {
-        if(helpclass.validateNameLength(name)) {
-            for(int i = 0; i < employees.size(); i++) {
-                if(employees.get(i).getName().equals(name)) {
+        if (helpclass.validateNameLength(name)) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getName().equals(name)) {
                     return employees.get(i);
                 }
             }
         }
         return null;
     }
-
-
-
-
 }

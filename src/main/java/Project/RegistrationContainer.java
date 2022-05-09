@@ -18,8 +18,12 @@ public class RegistrationContainer {
         timeRegistration.add(timeRegistration1);
     }
 
-    public Date getDate() {return workedDate;}
+    public Date getDate() {
+        return workedDate;
+    }
 
-    public ArrayList<TimeRegistration> getTimeRegistration() {return timeRegistration;}
+    public ArrayList<TimeRegistration> getTimeRegistration() {
+        return timeRegistration;
+    }
 
 }

@@ -10,9 +10,9 @@ public class Project {
     protected static ArrayList<Project> projects = new ArrayList<Project>();
 
     //project ID
-    Date d=new Date();
-    int year=d.getYear();
-    int currentYear=(year-100)*1000;
+    Date d = new Date();
+    int year = d.getYear();
+    int currentYear = (year - 100) * 1000;
     private static int runner = 0;
 
     private Activity.ActivityType type;
@@ -27,27 +27,35 @@ public class Project {
     public void setName(String name) {
         this.name = name;
     }
+
     public int getProjektnummre() {
         return projektnummre;
     }
-    public void setProjectManager(Employee user){
+
+    public void setProjectManager(Employee user) {
         this.projectManager = user;
     }
+
     public String getName() {
         return name;
     }
-    public Employee getProjectManager(){
+
+    public Employee getProjectManager() {
         return projectManager;
     }
+
     public static Date getStartDate() {
         return startDate;
     }
+
     public static void setStartDate(Date startDate) {
         Project.startDate = startDate;
     }
+
     public Date getEndDate() {
         return endDate;
     }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
@@ -57,7 +65,7 @@ public class Project {
         this.name = name;
         this.startDate = null;
         this.endDate = null;
-        this.projektnummre = currentYear+this.runner;
+        this.projektnummre = currentYear + this.runner;
         this.projectManager = null;
         this.activities = new ArrayList<Activity>();
     }
@@ -67,18 +75,18 @@ public class Project {
         this.name = name;
         this.startDate = null;
         this.endDate = null;
-        this.projektnummre = currentYear+this.runner;
+        this.projektnummre = currentYear + this.runner;
         this.projectManager = null;
         this.activities = null;
     }
 
     //function for creating project
     public static void createProject(String name) {
-        if(Project.findProject(name) != null){
+        if (Project.findProject(name) != null) {
             System.out.println("name in use");
             return;
         }
-        if(name == "exit") {
+        if (name == "exit") {
             System.out.println("Name can't be exit");
             return;
         }
@@ -88,32 +96,30 @@ public class Project {
     }
 
     //add activity to a project if start and end date is known
-            public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
-                 activities.add(Activity.createActivity(name1, type1, date1, date2,false));
+    public void addActivity(String name1, Activity.ActivityType type1, Date date1, Date date2) throws ParseException {
+        activities.add(Activity.createActivity(name1, type1, date1, date2, false));
     }
 
     //add activity to a project if start and end date is unknown
     public void addActivity2(String name1, Activity.ActivityType type1) throws ParseException {
-        activities.add(Activity.createActivity2(name1, type1,false));
+        activities.add(Activity.createActivity2(name1, type1, false));
     }
 
 
-
-
     public static Project findProject(String projectName) {
-            for(int i = 0; i < projects.size(); i++) {
-                if(projects.get(i).getName().equals(projectName)) {
-                    return projects.get(i);
-                }
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getName().equals(projectName)) {
+                return projects.get(i);
             }
+        }
         return null;
     }
 
     //print all projects
     public static void printProjects() {
-        for(int i = 0; i < projects.size(); i++) {
+        for (int i = 0; i < projects.size(); i++) {
             System.out.println("Project Name: " + projects.get(i).name);
-            if(projects.get(i).projectManager == null) {
+            if (projects.get(i).projectManager == null) {
                 System.out.println("project has no lead");
                 System.out.println("-----------------------------------");
             } else {
@@ -132,26 +138,26 @@ public class Project {
     }
 
 
-    public static void listAssignedActivities(Employee user){
-        for(int l = 0; l < Activity.getActivitiis().size(); l++) {
+    public static void listAssignedActivities(Employee user) {
+        for (int l = 0; l < Activity.getActivitiis().size(); l++) {
             System.out.println(Activity.getActivitiis().get(l).getName());
         }
 
-        for(int i = 0; i < projects.size(); i++) {
-            for(int h = 0; h < projects.get(i).activities.size(); h++) {
-                for(int g = 0; g < projects.get(i).activities.get(h).getAssignedUsers().size(); g++)
-                if(Objects.equals(projects.get(i).activities.get(h).getAssignedUsers().get(g), user)) {
-                    System.out.println(projects.get(i).activities.get(h).getName());
-                }
+        for (int i = 0; i < projects.size(); i++) {
+            for (int h = 0; h < projects.get(i).activities.size(); h++) {
+                for (int g = 0; g < projects.get(i).activities.get(h).getAssignedUsers().size(); g++)
+                    if (Objects.equals(projects.get(i).activities.get(h).getAssignedUsers().get(g), user)) {
+                        System.out.println(projects.get(i).activities.get(h).getName());
+                    }
             }
         }
     }
 
-    public static Activity findActivityInProjects(String name){
-        for(int i = 0; i < projects.size(); i++) {
-            for(int h = 0; h < projects.get(i).activities.size(); h++) {
-                    if(projects.get(i).activities.get(h).getName()==name) {
-                        return projects.get(i).activities.get(h);
+    public static Activity findActivityInProjects(String name) {
+        for (int i = 0; i < projects.size(); i++) {
+            for (int h = 0; h < projects.get(i).activities.size(); h++) {
+                if (projects.get(i).activities.get(h).getName() == name) {
+                    return projects.get(i).activities.get(h);
                 }
             }
         }
@@ -159,11 +165,11 @@ public class Project {
     }
 
     public Activity findActivity(String name) {
-            for(int h = 0; h < activities.size(); h++) {
-                if(activities.get(h).getName().equals(name)) {
-                    return activities.get(h);
-                }
+        for (int h = 0; h < activities.size(); h++) {
+            if (activities.get(h).getName().equals(name)) {
+                return activities.get(h);
             }
+        }
         return null;
     }
 
@@ -174,29 +180,28 @@ public class Project {
         System.out.println("-----------------------------------");
         System.out.println("Activity info: ");
         System.out.println("-----------------------------------");
-        if(activities.size() == 0) {
+        if (activities.size() == 0) {
             System.out.println("Project has no activities \n");
         }
-        for(int i = 0; i < activities.size(); i++) {
+        for (int i = 0; i < activities.size(); i++) {
             System.out.println("Activity name: " + activities.get(i).getActivityName());
             System.out.println("Activity type: " + activities.get(i).getActivityType());
             System.out.println("Estimated time: " + activities.get(i).getEstimatedTime());
             System.out.println("Start date: " + activities.get(i).getStartDate());
             System.out.println("End date: " + activities.get(i).getEndDate());
-            System.out.println("-----------------------------------"  + "\n");
+            System.out.println("-----------------------------------" + "\n");
         }
     }
 
     //Used to check if a project has a with the same activity name since they can't have the same name
     public boolean checkIfActivityExists(String activity) {
-        for(int i = 0; i < activities.size(); i++){
-            if(activities.get(i).getName().equals(activity)){
+        for (int i = 0; i < activities.size(); i++) {
+            if (activities.get(i).getName().equals(activity)) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
-
-
 
 
 }

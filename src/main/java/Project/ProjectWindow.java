@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ProjectWindow extends Window {
 
     ProjectWindow(Program program) throws ParseException {
-        super("Project Window \n 1 to make a new project \n 2 to view projects \n 3 to add project leader \n exit to return",program);
+        super("Project Window \n 1 to make a new project \n 2 to view projects \n 3 to add project leader \n exit to return", program);
         functions();
         program.currentWindow = new OverviewWindow(program);
     }
@@ -17,27 +17,31 @@ public class ProjectWindow extends Window {
 
         String input = keyboard.next();
 
-        switch (input){
+        switch (input) {
 
-            case "1":{
+            case "1": {
                 makeproject();
 
 
-            }break;
+            }
+            break;
 
-            case "2":{
+            case "2": {
                 System.out.println("List of all projects: ");
                 Project.printProjects();
-            }break;
+            }
+            break;
 
-            case "3":{
+            case "3": {
                 addProjectLead();
 
-            }break;
+            }
+            break;
 
-            case "exit":{
+            case "exit": {
                 program.currentWindow = new OverviewWindow(program);
-            }break;
+            }
+            break;
 
 
         }
@@ -47,7 +51,7 @@ public class ProjectWindow extends Window {
         System.out.println("You can only add project managers to projects without manager otherwise the current project manager as to do it");
         Scanner keyboard = new Scanner(System.in);
         Employee user = null;
-        while(user == null) {
+        while (user == null) {
             System.out.println("User you want to make project manager:");
             System.out.println("-----------------------------------");
             EmployeeController.printEmployees();
@@ -61,7 +65,7 @@ public class ProjectWindow extends Window {
         boolean set = false;
         while (set == false) {
             String projectname = keyboard.next();
-            if(projectname.equals("exit")) {
+            if (projectname.equals("exit")) {
                 return;
             }
             Project project = Project.findProject(projectname);
@@ -73,21 +77,19 @@ public class ProjectWindow extends Window {
                     set = true;
                 }
             }
-
         }
-
     }
 
     public static void makeproject() {
         Scanner keyboard = new Scanner(System.in);
         Project project = null;
-        while(project == null) {
+        while (project == null) {
             System.out.println("Please enter project name: ");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
-            if(Project.findProject(name) != null){
+            if (Project.findProject(name) != null) {
                 System.out.println("Project with that name already exists");
                 project = null;
             } else {

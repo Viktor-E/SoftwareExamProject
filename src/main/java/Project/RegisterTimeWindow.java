@@ -12,6 +12,7 @@ public class RegisterTimeWindow extends Window {
         program.currentWindow = new OverviewWindow(program);
 
     }
+
     Date currentDate = new Date();
     Date eventStartDate;
     long day30 = 30l * 24 * 60 * 60 * 1000;
@@ -23,30 +24,34 @@ public class RegisterTimeWindow extends Window {
 
         String input = keyboard.next();
 
-        switch (input){
-            
-            case "1":{
+        switch (input) {
+
+            case "1": {
                 registerTime(program.currentUser);
-            }break;
+            }
+            break;
 
-            case "2":{
+            case "2": {
                 registerAnothersTime();
-            }break;
+            }
+            break;
 
-            case "3":{
+            case "3": {
                 viewRegisteredTime();
-            }break;
+            }
+            break;
 
-            case "exit":{
+            case "exit": {
                 program.currentWindow = new OverviewWindow(program);
-            }break;
-            
-            
+            }
+            break;
+
+
         }
     }
 
 
-    public void  registerTime(Employee user) throws ParseException {
+    public void registerTime(Employee user) throws ParseException {
         Scanner keyboard = new Scanner(System.in);
         String date = null;
         //you can't register dates older than 30 days
@@ -70,12 +75,12 @@ public class RegisterTimeWindow extends Window {
         }
         String hours = "0";
         workhour = true;
-        while (workhour){
+        while (workhour) {
             System.out.println("Enter work mins");
             hours = keyboard.next();
             try {
                 int i = Integer.parseInt(hours);
-                workhour = helpclass.checkWorkHours(i,program.currentUser);
+                workhour = helpclass.checkWorkHours(i, program.currentUser);
             } catch (NumberFormatException e) {
                 workhour = false;
             }
@@ -84,13 +89,14 @@ public class RegisterTimeWindow extends Window {
         String[] dates = date.split("-");
         user.registerTime(new Date(Integer.parseInt(dates[2]) - 1900, Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[0])), Activity.findActivity(activity), Integer.parseInt(hours));
     }
+
     public void registerAnothersTime() throws ParseException {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter user to register time");
         Employee employee = null;
-        while(employee == null) {
+        while (employee == null) {
             String user = keyboard.next();
-            if(user.equals("exit")) {
+            if (user.equals("exit")) {
                 return;
             }
             employee = EmployeeController.findEmployee(user);
@@ -109,7 +115,7 @@ public class RegisterTimeWindow extends Window {
         }
         Project.listAssignedActivities(program.currentUser);
         Activity activity = null;
-        while(activity == null) {
+        while (activity == null) {
             String act = keyboard.next();
             activity = Activity.findActivity(act);
         }
@@ -120,7 +126,7 @@ public class RegisterTimeWindow extends Window {
             hours = keyboard.next();
             try {
                 int i = Integer.parseInt(hours);
-                workhour = helpclass.checkWorkHours(i,program.currentUser);
+                workhour = helpclass.checkWorkHours(i, program.currentUser);
             } catch (NumberFormatException e) {
                 workhour = false;
             }
@@ -137,7 +143,7 @@ public class RegisterTimeWindow extends Window {
         while (exit == false) {
             System.out.println("Enter Date dd-mm-yyyy or type exit to return");
             String date = keyboard.next();
-            if(date.equals("exit")) {
+            if (date.equals("exit")) {
                 return;
             }
             date1 = helpclass.stringToDate(date);

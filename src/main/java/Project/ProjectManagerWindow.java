@@ -9,7 +9,7 @@ public class ProjectManagerWindow extends Window {
     public Project workproject;
 
     ProjectManagerWindow(Program program) throws ParseException {
-        super("Project Window \n 1 to view projects you manage \n 2 to add activity \n 3 to view project info \n 4 to manage projects \n exit to return",program);
+        super("Project Window \n 1 to view projects you manage \n 2 to add activity \n 3 to view project info \n 4 to manage projects \n exit to return", program);
         functions();
         program.currentWindow = new OverviewWindow(program);
     }
@@ -20,36 +20,41 @@ public class ProjectManagerWindow extends Window {
 
         String input = keyboard.next();
 
-        switch (input){
+        switch (input) {
 
-            case "1":{
+            case "1": {
                 viewProjects();
 
-            }break;
+            }
+            break;
 
-            case "2":{
+            case "2": {
                 addActivtyToProject();
-            }break;
+            }
+            break;
 
-            case "3":{
+            case "3": {
                 listActivitiesOnProject();
 
-            }break;
-            case "4":{
+            }
+            break;
+            case "4": {
                 manageProjects();
 
-            }break;
+            }
+            break;
 
-            case "exit":{
+            case "exit": {
                 program.currentWindow = new OverviewWindow(program);
-            }break;
+            }
+            break;
 
 
         }
     }
 
     private void manageProjects() throws ParseException {
-        if(viewProjects() == null) {
+        if (viewProjects() == null) {
             System.out.println("You must be a project manager to add an activity \n");
             return;
         }
@@ -58,13 +63,13 @@ public class ProjectManagerWindow extends Window {
         while (project == null) {
             System.out.println("Project you want to manage:");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
             project = Project.findProject(name);
-            if(project == null) {
+            if (project == null) {
                 project = null;
-            } else if(project.getProjectManager() != program.currentUser) {
+            } else if (project.getProjectManager() != program.currentUser) {
                 project = null;
             }
         }
@@ -72,7 +77,7 @@ public class ProjectManagerWindow extends Window {
         System.out.println(" 1 to set estimated time \n 2 to assign user to a project \n 3 to change project start date \n 4 to change project start date \n 5 to change project name \n 6 to change project manager \n 7 to change activity name");
         int what = 0;
         //very ugly! probably better way to do it :)
-        while(what != 1 && what != 2 && what != 3 && what != 4 && what != 5 && what != 6 && what != 7) {
+        while (what != 1 && what != 2 && what != 3 && what != 4 && what != 5 && what != 6 && what != 7) {
             try {
                 what = Integer.parseInt(keyboard.next());
             } catch (NumberFormatException e) {
@@ -114,7 +119,7 @@ public class ProjectManagerWindow extends Window {
         Scanner keyboard = new Scanner(System.in);
         Employee newlead = null;
         System.out.println("Please enter a employee name");
-        while(newlead == null) {
+        while (newlead == null) {
             String name = keyboard.next();
             newlead = EmployeeController.findEmployee(name);
         }
@@ -128,10 +133,10 @@ public class ProjectManagerWindow extends Window {
         String name = null;
 
         System.out.println("Enter new project name");
-        while(name == null){
+        while (name == null) {
             String name1 = keyboard.next();
 
-            if(Project.findProject(name1) == null) {
+            if (Project.findProject(name1) == null) {
                 workproject.setName(name1);
                 name = name1;
             } else {
@@ -146,9 +151,9 @@ public class ProjectManagerWindow extends Window {
         Date date = null;
         System.out.println("Enter Date dd-mm-yyyy");
 
-        while(date == null) {
+        while (date == null) {
             String name = keyboard.next();
-            date= helpclass.stringToDate(name);
+            date = helpclass.stringToDate(name);
         }
 
         workproject.setEndDate(date);
@@ -160,9 +165,9 @@ public class ProjectManagerWindow extends Window {
         Date date = null;
         System.out.println("Enter Date dd-mm-yyyy");
 
-        while(date == null) {
+        while (date == null) {
             String name = keyboard.next();
-            date= helpclass.stringToDate(name);
+            date = helpclass.stringToDate(name);
         }
 
         workproject.setStartDate(date);
@@ -179,10 +184,10 @@ public class ProjectManagerWindow extends Window {
             EmployeeController.printEmployees();
             System.out.println("-----------------------------------");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
-            if(EmployeeController.findEmployee(name) != null && Activity.checkAvailability(EmployeeController.findEmployee(name)) == true) {
+            if (EmployeeController.findEmployee(name) != null && Activity.checkAvailability(EmployeeController.findEmployee(name)) == true) {
                 employee = EmployeeController.findEmployee(name);
                 bo = true;
             }
@@ -193,10 +198,10 @@ public class ProjectManagerWindow extends Window {
         while (bo1 == false) {
             System.out.println("Please select an activity");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
-            if(project.findActivity(name) != null) {
+            if (project.findActivity(name) != null) {
                 activity = project.findActivity(name);
                 bo1 = true;
             }
@@ -213,7 +218,7 @@ public class ProjectManagerWindow extends Window {
         while (activity == null) {
             System.out.println("Please select an activity");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
             activity = project.findActivity(name);
@@ -221,7 +226,7 @@ public class ProjectManagerWindow extends Window {
         System.out.println("Please enter estimated time for activity:");
         boolean good = false;
         int time = 0;
-        while(good == false) {
+        while (good == false) {
             try {
                 time = Integer.parseInt(keyboard.next());
                 good = true;
@@ -234,7 +239,7 @@ public class ProjectManagerWindow extends Window {
 
     private void listActivitiesOnProject() {
         Project project = null;
-        if(viewProjects() == null) {
+        if (viewProjects() == null) {
             System.out.println("You must be a project manager to add an activity \n");
             return;
         }
@@ -242,11 +247,11 @@ public class ProjectManagerWindow extends Window {
         while (project == null) {
             System.out.println("Project you want to view activities for:");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
             project = Project.findProject(name);
-            if(project.getProjectManager() != program.currentUser) {
+            if (project.getProjectManager() != program.currentUser) {
                 project = null;
             }
         }
@@ -254,7 +259,7 @@ public class ProjectManagerWindow extends Window {
     }
 
     private void addActivtyToProject() throws ParseException {
-        if(viewProjects() == null) {
+        if (viewProjects() == null) {
             System.out.println("You must be a project manager to add an activity \n");
             return;
         }
@@ -268,38 +273,37 @@ public class ProjectManagerWindow extends Window {
         while (project == null) {
             System.out.println("Project you want to add an activity to:");
             String name = keyboard.next();
-            if(name.equals("exit")) {
+            if (name.equals("exit")) {
                 return;
             }
             project = Project.findProject(name);
-            if(project == null) {
+            if (project == null) {
                 project = null;
-            }
-            else if(project.getProjectManager() != program.currentUser) {
+            } else if (project.getProjectManager() != program.currentUser) {
                 project = null;
             }
         }
         workproject = project;
         System.out.println("Please enter the name of the activity: ");
         boolean test = true;
-        while(test == true) {
+        while (test == true) {
             activityName = keyboard.next();
             test = workproject.checkIfActivityExists(activityName);
-            if(test == true) {
+            if (test == true) {
                 System.out.println("That name is already in use");
             }
         }
         System.out.println("Chose type of activity: ");
         int i = 1;
         for (Activity.ActivityType myVar : Activity.ActivityType.values()) {
-            System.out.println(i + " "+ myVar);
+            System.out.println(i + " " + myVar);
             i++;
         }
 
-            System.out.println("Please enter the type of activity: ");
+        System.out.println("Please enter the type of activity: ");
         int type1 = 0;
         //very ugly! probably better way to do it :)
-        while(type1 != 1 && type1 != 2 && type1 != 3 && type1 != 4 && type1 != 5 && type1 != 6) {
+        while (type1 != 1 && type1 != 2 && type1 != 3 && type1 != 4 && type1 != 5 && type1 != 6) {
             try {
                 type1 = Integer.parseInt(keyboard.next());
             } catch (NumberFormatException e) {
@@ -307,35 +311,35 @@ public class ProjectManagerWindow extends Window {
             }
         }
 
-            switch (type1) {
-                case 1:
-                    acttype = Activity.ActivityType.KRAVSPECIFIKATION;
-                    break;
-                case 2:
-                    acttype = Activity.ActivityType.PROJEKTLEDELSE;
-                    break;
-                case 3:
-                    acttype = Activity.ActivityType.ANALYSE;
-                    break;
-                case 4:
-                    acttype = Activity.ActivityType.DESIGN;
-                    break;
-                case 5:
-                    acttype = Activity.ActivityType.PROGRAMMERING;
-                    break;
-                case 6:
-                    acttype = Activity.ActivityType.TEST_MED_MERE;
-                    break;
+        switch (type1) {
+            case 1:
+                acttype = Activity.ActivityType.KRAVSPECIFIKATION;
+                break;
+            case 2:
+                acttype = Activity.ActivityType.PROJEKTLEDELSE;
+                break;
+            case 3:
+                acttype = Activity.ActivityType.ANALYSE;
+                break;
+            case 4:
+                acttype = Activity.ActivityType.DESIGN;
+                break;
+            case 5:
+                acttype = Activity.ActivityType.PROGRAMMERING;
+                break;
+            case 6:
+                acttype = Activity.ActivityType.TEST_MED_MERE;
+                break;
         }
         System.out.println("Do you want to set start/end date now? \n 1. yes \n 2. no");
         int yesno = 0;
-            while(yesno != 1 && yesno != 2) {
-                try {
-                    yesno = Integer.parseInt(keyboard.next());
-                } catch (NumberFormatException e) {
-                    System.out.println("invalid input");
-                }
+        while (yesno != 1 && yesno != 2) {
+            try {
+                yesno = Integer.parseInt(keyboard.next());
+            } catch (NumberFormatException e) {
+                System.out.println("invalid input");
             }
+        }
 
 
         switch (yesno) {
@@ -358,7 +362,7 @@ public class ProjectManagerWindow extends Window {
                         Date2 = date2;
                     }
                 }
-                project.addActivity(activityName, acttype,Date1,Date2);
+                project.addActivity(activityName, acttype, Date1, Date2);
 
                 break;
             case 2:
@@ -367,24 +371,23 @@ public class ProjectManagerWindow extends Window {
         }
 
 
-
-
     }
 
-    private String  viewProjects() {
+    private String viewProjects() {
         System.out.println("List of projects you manage: ");
         int count = 0;
-        for(int i = 0; i < Project.projects.size(); i++) {
-            if(Project.projects.get(i).getProjectManager() == program.currentUser) {
+        for (int i = 0; i < Project.projects.size(); i++) {
+            if (Project.projects.get(i).getProjectManager() == program.currentUser) {
                 count++;
                 System.out.println(Project.projects.get(i).getName());
 
             }
         }
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("You aren't project manager on any projects");
             return null;
-        }return "Project";
+        }
+        return "Project";
 
     }
 

@@ -21,23 +21,26 @@ public class Employee {
 
     //get and setter functions
     public void setName(String name) {
-        if(helpclass.validateNameLength(name)) {
+        if (helpclass.validateNameLength(name)) {
             this.name = name;
         }
     }
+
     public String getName() {
         return name;
     }
+
     public int getEmployeeid() {
         return employeeid;
     }
+
     public void setEmployeeid(int employeeid) {
         this.employeeid = employeeid;
     }
 
     //function for making a timeRegistrationContainer
-    public void registerTime(Date date, Activity activity, int worktime){
-        for(int i = 0; i < timeRegistrationContainers.size(); i++) {
+    public void registerTime(Date date, Activity activity, int worktime) {
+        for (int i = 0; i < timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
                 timeRegistrationContainers.get(i).addRegistration(new TimeRegistration(activity, worktime));
                 return;
@@ -45,14 +48,14 @@ public class Employee {
         }
         //if it doesn't find the date
         timeRegistrationContainers.add(new RegistrationContainer(date));
-        timeRegistrationContainers.get(timeRegistrationContainers.size()-1).addRegistration(new TimeRegistration(activity, worktime));
+        timeRegistrationContainers.get(timeRegistrationContainers.size() - 1).addRegistration(new TimeRegistration(activity, worktime));
     }
 
     //print time registation for a given date
     public void timeRegistations(Date date) {
-        for(int i = 0; i <timeRegistrationContainers.size(); i++) {
+        for (int i = 0; i < timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
-                for(int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
+                for (int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
                     System.out.print("user: " + getName() + " has worked : " + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime() + " minutes on ");
                     System.out.println("activity: " + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedActivity().getName());
                 }
@@ -68,23 +71,20 @@ public class Employee {
         return maxActivities;
     }
 
-    public ArrayList<RegistrationContainer> getTimesRegistrationContainer(){
+    public ArrayList<RegistrationContainer> getTimesRegistrationContainer() {
         return timeRegistrationContainers;
     }
 
     public int remainingHours(Date date) {
         int count = 0;
-        for(int i = 0; i <timeRegistrationContainers.size(); i++) {
+        for (int i = 0; i < timeRegistrationContainers.size(); i++) {
             if (timeRegistrationContainers.get(i).getDate().equals(date)) {
-                for(int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
-                   count = count + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime();
+                for (int h = 0; h < timeRegistrationContainers.get(i).getTimeRegistration().size(); h++) {
+                    count = count + timeRegistrationContainers.get(i).getTimeRegistration().get(h).getWorkedTime();
                 }
             }
-        } return count;
+        }
+        return count;
     }
-
-
-
-
 
 }

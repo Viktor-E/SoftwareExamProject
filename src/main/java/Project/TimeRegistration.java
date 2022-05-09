@@ -13,8 +13,12 @@ public class TimeRegistration {
     }
 
     //get functions
-    public int getWorkedTime() {return workedTime;}
-    public Activity getWorkedActivity() {return workedActivity;}
+    public int getWorkedTime() {
+        return workedTime;
+    }
 
+    public Activity getWorkedActivity() {
+        return workedActivity;
+    }
 
 }

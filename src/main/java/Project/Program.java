@@ -11,32 +11,38 @@ public class Program {
 
 
     Program() throws ParseException {
-    this.employeeList = EmployeeController.getEmployees();
-    currentWindow = new LoginWindow(this);
+        this.employeeList = EmployeeController.getEmployees();
+        currentWindow = new LoginWindow(this);
     }
 
     public void changeWindow(Window newWindow) {
         currentWindow = newWindow;
     }
+
     public void changeWindow(String number) throws ParseException {
 
-        switch(number){
-            case "1":{
+        switch (number) {
+            case "1": {
                 currentWindow = new RegisterTimeWindow(this);
-            }break;
-            case "2":{
+            }
+            break;
+            case "2": {
                 currentWindow = new ProjectWindow(this);
-            }break;
-            case "3":{
+            }
+            break;
+            case "3": {
                 currentWindow = new ProjectManagerWindow(this);
-            }break;
-            case "4":{
+            }
+            break;
+            case "4": {
                 currentWindow = new LoginWindow(this);
-                currentUser=null;
-            }break;
-            case "exit":{
+                currentUser = null;
+            }
+            break;
+            case "exit": {
                 currentWindow = new OverviewWindow(this);
-            }break;
+            }
+            break;
 
         }
 

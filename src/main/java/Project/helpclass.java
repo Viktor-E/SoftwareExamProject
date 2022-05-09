@@ -12,8 +12,8 @@ public class helpclass {
     //Date is an object and this function can be used to create one from a string
     //check format using regex match
     public static Date stringToDate(String date) throws ParseException {
-        if(date.matches(regex)) {
-            return  df.parse(date);
+        if (date.matches(regex)) {
+            return df.parse(date);
         } else return null;
     }
 
@@ -35,9 +35,9 @@ public class helpclass {
 
     //check if the amount of time is between 0 and expected work minutes
     public static boolean checkWorkHours(int i, Employee employee) {
-        if (i > 0 && i < employee.getMaxMinutes()){
+        if (i > 0 && i < employee.getMaxMinutes()) {
             return false;
         }
-            return true;
+        return true;
     }
 }
