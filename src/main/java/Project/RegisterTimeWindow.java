@@ -87,13 +87,54 @@ public class RegisterTimeWindow extends Window {
         }
         String[] dates = date.split("-");
         user.registerTime(new Date(Integer.parseInt(dates[2]) - 1900, Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[0])), Activity.findActivity(activity), Integer.parseInt(hours));
-        System.out.println(dates[0] + "" + dates[1] + dates[2]);
     }
     public void registerAnothersTime() throws ParseException {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Enter user to register time");
-        String user = keyboard.next();
-        registerTime(EmployeeController.findEmployee(user));
+        Employee employee = null;
+        while(employee == null) {
+            String user = keyboard.next();
+            if(user.equals("exit")) {
+                return;
+            }
+            employee = EmployeeController.findEmployee(user);
+        }
+        String date = null;
+        //you can't register dates older than 30 days
+        while (olderThan30 == false) {
+            System.out.println("Enter Date dd-mm-yyyy");
+            date = keyboard.next();
+            eventStartDate = helpclass.stringToDate(date);
+            if (eventStartDate == null) {
+                olderThan30 = false;
+            } else {
+                olderThan30 = currentDate.before(new Date((eventStartDate.getTime() + day30)));
+            }
+        }
+        Project.listAssignedActivities(program.currentUser);
+        Activity activity = null;
+        while(activity == null) {
+            String act = keyboard.next();
+            activity = Activity.findActivity(act);
+        }
+        String hours = "0";
+        workhour = false;
+        while (!workhour) {
+            System.out.println("Enter work mins");
+            hours = keyboard.next();
+            workhour = true;
+            try {
+                int i = Integer.parseInt(hours);
+                if (i < 0) {
+                    workhour = false;
+                }
+            } catch (NumberFormatException e) {
+                workhour = false;
+            }
+            String[] dates = date.split("-");
+
+            employee.registerTime(new Date(Integer.parseInt(dates[2]) - 1900, Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[0])), Activity.findActivity(activity.getName()), Integer.parseInt(hours));
+        }
     }
 
     public void viewRegisteredTime() throws ParseException {
